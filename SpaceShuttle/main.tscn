@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx52vsn3hkb3c"]
+
+[ext_resource type="PackedScene" uid="uid://b1lwsuxp2udjv" path="res://player.tscn" id="1_1mr5g"]
+[ext_resource type="Script" path="res://main.gd" id="1_3iraa"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_3iraa")
+
+[node name="Player" parent="." instance=ExtResource("1_1mr5g")]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 161.0
+offset_top = 47.0
+offset_right = 201.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 55
+text = "space shuttle demo"
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
