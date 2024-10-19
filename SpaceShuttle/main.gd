@@ -12,7 +12,7 @@ func _process(delta):
 
 func _unhandled_input(event):
 	if event.is_action_pressed("Spacebar"):
-		if $Label.visibile == true:
+		if $Label.visible == true:
 			$Label.hide()
-		elif $Label.visibile == false:
+		elif $Label.visible == false:
 			$Label.show()
