@@ -1,4 +1,2 @@
-res://main.tscn
-res://player.gd
-res://player.tscn
-res://main.gd
+res://start.tscn
+res://start.gd

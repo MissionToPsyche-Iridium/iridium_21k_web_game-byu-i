@@ -1,7 +1,7 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1729362022
+::res://::1729364412
 icon.svg::CompressedTexture2D::7860460979613838976::1728942307::1728942370::1::::<><>::
-main.gd::GDScript::-1::1728942307::0::1::::<>Node2D<>::
-main.tscn::PackedScene::8837214614637239998::1728942378::0::1::::<><>::uid://b1lwsuxp2udjv::::res://player.tscn<>res://main.gd
-player.gd::GDScript::-1::1728942307::0::1::::<>Node2D<>::
-player.tscn::PackedScene::4235407778423657667::1728942379::0::1::::<><>::res://player.gd
+main.gd::GDScript::-1::1729362317::0::1::::<>Node2D<>::
+main.tscn::PackedScene::8837214614637239998::1729362335::0::1::::<><>::uid://b1lwsuxp2udjv::::res://player.tscn<>res://main.gd
+player.gd::GDScript::-1::1729362059::0::1::::<>Node2D<>::
+player.tscn::PackedScene::4235407778423657667::1729362319::0::1::::<><>::res://player.gd
