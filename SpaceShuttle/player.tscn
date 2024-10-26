@@ -1,13 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1lwsuxp2udjv"]
+[gd_scene load_steps=4 format=3 uid="uid://b1lwsuxp2udjv"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_fvbno"]
+[ext_resource type="Texture2D" uid="uid://kkpxpa0tey06" path="res://Art/UFO1.0.png" id="2_u4cyb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y7jj6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_u4cyb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_fvbno")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(1, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_y7jj6")
