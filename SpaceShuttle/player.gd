@@ -11,9 +11,9 @@ func _process(delta):
 	position.y += .098
 
 func _unhandled_input(event):
-	if event.is_action_pressed("W"):
+	if Input.is_action_pressed("W"):
 		position.y -= 4
-	elif event.is_action_pressed("A"):
+	elif Input.is_action_pressed("A"):
 		position.x -= 2
-	elif event.is_action_pressed("D"):
+	elif Input.is_action_pressed("D"):
 		position.x += 2

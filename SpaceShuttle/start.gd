@@ -1,4 +1,6 @@
 extends Node2D
+var player = preload("res://player.tscn")
+var pc
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,9 +16,9 @@ func Play():
 	pass
 
 func _on_startButton_pressed():
-	#SceneTree.change_scene_to_file("res://main.tscn")
-	#get_tree().change_scene_to_file("res://main.tscn")
-	pass
+	pc = player.instantiate()
+	add_child(pc)
+	hide_buttons()
 
 func _on_tutorialButton_pressed():
 	pass
@@ -26,3 +28,13 @@ func _on_creditsButton_pressed():
 
 func _on_settingsButton_pressed():
 	pass
+
+func hide_buttons():
+	$startButton.hide()
+	$tutorialButton.hide()
+	$creditsButton.hide()
+
+#func difficulty():
+#	$easy
+#	$med
+#	$hard
