@@ -8,7 +8,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position.y += .098
+	position.y += .98
+	if position.y >= 560:
+		destroy_rocket()
 
 func _unhandled_input(event):
 	if Input.is_action_pressed("W"):
@@ -17,3 +19,6 @@ func _unhandled_input(event):
 		position.x -= 2
 	elif Input.is_action_pressed("D"):
 		position.x += 2
+
+func destroy_rocket():
+	queue_free()

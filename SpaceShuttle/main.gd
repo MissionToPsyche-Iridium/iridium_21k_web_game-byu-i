@@ -13,5 +13,7 @@ func _unhandled_input(event):
 	if event.is_action_pressed("Spacebar"):
 		if $Label.visible == true:
 			$Label.hide()
+			$ColorRect.position = Vector2(100,300)
 		elif $Label.visible == false:
 			$Label.show()
+			$ColorRect.position = Vector2(400,50)

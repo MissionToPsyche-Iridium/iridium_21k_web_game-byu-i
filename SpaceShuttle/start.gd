@@ -1,6 +1,7 @@
 extends Node2D
 var player = preload("res://player.tscn")
 var pc
+var rng = RandomNumberGenerator
 
 
 # Called when the node enters the scene tree for the first time.

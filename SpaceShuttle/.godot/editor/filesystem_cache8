@@ -1,12 +1,12 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1730570745
+::res://::1730571275
 icon.svg::CompressedTexture2D::7860460979613838976::1728942307::1728942370::1::::<><>::
 main.gd::GDScript::-1::1730487805::0::1::::<>Node2D<>::
-main.tscn::PackedScene::8837214614637239998::1730488362::0::1::::<><>::res://main.gd<>uid://c6qlso1fhp0kp::::res://start.tscn
+main.tscn::PackedScene::8837214614637239998::1730570919::0::1::::<><>::res://main.gd<>uid://c6qlso1fhp0kp::::res://start.tscn
 player.gd::GDScript::-1::1730488256::0::1::::<>Node2D<>::
-player.tscn::PackedScene::4235407778423657667::1730488363::0::1::::<><>::res://player.gd
-start.gd::GDScript::-1::1730488587::0::1::::<>Node2D<>::
-start.tscn::PackedScene::6982426371169848783::1730488633::0::1::::<><>::res://start.gd
+player.tscn::PackedScene::4235407778423657667::1730570919::0::1::::<><>::res://player.gd<>uid://kkpxpa0tey06::::res://Art/UFO1.0.png
+start.gd::GDScript::-1::1730570915::0::1::::<>Node2D<>::
+start.tscn::PackedScene::6982426371169848783::1730570919::0::1::::<><>::res://start.gd
 Trivia.json::JSON::-1::1729968061::0::1::::<><>::
 ::res://Art/::1730487634
 Jupiter.png::CompressedTexture2D::4106023123917131408::1729970293::1730487634::1::::<><>::
