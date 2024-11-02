@@ -1,13 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1lwsuxp2udjv"]
+[gd_scene load_steps=3 format=3 uid="uid://b1lwsuxp2udjv"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_fvbno"]
+[ext_resource type="Texture2D" uid="uid://kkpxpa0tey06" path="res://Art/UFO1.0.png" id="2_ejpqe"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_fvbno")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(1, 0, 0, 1)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_ejpqe")

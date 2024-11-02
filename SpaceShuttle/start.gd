@@ -17,6 +17,7 @@ func Play():
 
 func _on_startButton_pressed():
 	pc = player.instantiate()
+	pc.position = Vector2(20,20)
 	add_child(pc)
 	hide_buttons()
 
