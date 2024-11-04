@@ -1,7 +1,17 @@
 {
 	"Game Name":"Space Lander!",
+	"Difficulty1": "Easy Questions",
 	"TEQ001": "What is the largest planet in the solar system?",
 	"TEA001": "Jupiter",
 	"TEQ002": "What is the second largest planet in the solar system?",
-	"TEA002": "Saturn"
+	"TEA002": "Saturn",
+	"Difficulty2": "Medium Questions",
+	"TMQ001" : "",
+	"TMA001" : "",
+	"Difficullty3": "Hard Questions",
+	"THQ001" :"",
+	"THA001" :"",
+	"BonusDifficulty": "Bonus Questions",
+	"TBQ001" :"",
+	"TBA001" :"",
 }
