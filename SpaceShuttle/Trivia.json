@@ -1,5 +1,7 @@
 {
 	"Game Name":"Space Lander!",
 	"TEQ001": "What is the largest planet in the solar system?",
-	"TEA001": "Jupiter"
+	"TEA001": "Jupiter",
+	"TEQ002": "What is the second largest planet in the solar system?",
+	"TEA002": "Saturn"
 }
