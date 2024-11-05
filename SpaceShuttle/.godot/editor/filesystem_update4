@@ -1,2 +1,4 @@
 res://main.tscn
-res://Trivia.json
+res://player.gd
+res://player.tscn
+res://start.tscn
