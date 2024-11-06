@@ -1,4 +1,11 @@
+<<<<<<< Updated upstream
 res://start.gd
 res://start.tscn
 res://main.tscn
 res://player.tscn
+=======
+res://main.tscn
+res://player.tscn
+res://start.tscn
+res://start.gd
+>>>>>>> Stashed changes
