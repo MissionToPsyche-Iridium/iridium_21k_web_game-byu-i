@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://4qwjhi6s1wsb"]
+
+[ext_resource type="Script" path="res://planets.gd" id="1_ck4e8"]
+
+[node name="planets" type="Node2D"]
+script = ExtResource("1_ck4e8")
