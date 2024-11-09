@@ -1,7 +1,2 @@
-res://main.tscn
-res://player.tscn
-res://start.tscn
-res://player.gd
-res://start.gd
 res://planets.tscn
-res://planets.gd
+res://Trivia.json
