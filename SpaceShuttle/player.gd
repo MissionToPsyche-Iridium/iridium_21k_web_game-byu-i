@@ -8,17 +8,17 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# makes the lander constantly move down at a constant speed
 	position.y += .98
+	if Input.is_action_pressed("W") or Input.is_action_pressed("ui_up"):
+		position.y -= 4
+	if Input.is_action_pressed("A") or Input.is_action_pressed("ui_left"):
+		position.x -= 2
+	elif Input.is_action_pressed("D") or Input.is_action_pressed("ui_right"):
+		position.x += 2
 	if position.y >= 560:
 		destroy_rocket()
-
-func _unhandled_input(event):
-	if Input.is_action_pressed("W"):
-		position.y -= 4
-	elif Input.is_action_pressed("A"):
-		position.x -= 2
-	elif Input.is_action_pressed("D"):
-		position.x += 2
+	
 
 func destroy_rocket():
 	queue_free()
