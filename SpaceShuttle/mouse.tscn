@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvng3idpjv8d2"]
+
+[ext_resource type="Texture2D" uid="uid://kkpxpa0tey06" path="res://Art/UFO1.0.png" id="1_svxtd"]
+[ext_resource type="Script" path="res://mouse.gd" id="1_tga7o"]
+
+[node name="Mouse" type="Node2D"]
+script = ExtResource("1_tga7o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.175, 0.175)
+texture = ExtResource("1_svxtd")
