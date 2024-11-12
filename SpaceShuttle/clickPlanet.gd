@@ -1,9 +1,8 @@
-extends Node2D
+extends Area2D
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#show_buttons()
 	pass # Replace with function body.
 
 
@@ -11,9 +10,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func hide_planets_buttons():
-	pass
-
-func show_planets_buttons():
-	pass
-	
+func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int):
+	if event.is_action_pressed("clickPlanet"):
+		print("jupiter")

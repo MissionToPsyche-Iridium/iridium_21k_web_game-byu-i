@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://4qwjhi6s1wsb"]
+
+[ext_resource type="Script" path="res://planets.gd" id="1_ck4e8"]
+[ext_resource type="Texture2D" uid="uid://byq8uox4x38gq" path="res://Art/Jupiter.png" id="2_21hjo"]
+
+[node name="planets" type="Node2D"]
+script = ExtResource("1_ck4e8")
+
+[node name="jupiter" type="Sprite2D" parent="."]
+position = Vector2(867, 325)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_21hjo")

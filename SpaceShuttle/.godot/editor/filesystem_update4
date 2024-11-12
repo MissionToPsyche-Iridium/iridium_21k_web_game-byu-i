@@ -1,9 +1,5 @@
-res://planets.tscn
-<<<<<<< HEAD
-res://Trivia.json
-=======
-res://player.gd
 res://main.tscn
-res://player.tscn
-res://start.tscn
->>>>>>> 09a214dcf0d4d430f273bfbb8fd9d5afdc613122
+res://planets.tscn
+res://planets.gd
+res://jupiter.gd
+res://clickPlanet.gd

@@ -1,6 +1,85 @@
-[gd_scene load_steps=2 format=3 uid="uid://4qwjhi6s1wsb"]
+[gd_scene load_steps=5 format=3 uid="uid://4qwjhi6s1wsb"]
 
 [ext_resource type="Script" path="res://planets.gd" id="1_ck4e8"]
+[ext_resource type="Texture2D" uid="uid://byq8uox4x38gq" path="res://Art/Jupiter.png" id="2_21hjo"]
+[ext_resource type="Script" path="res://clickPlanet.gd" id="4_mwg06"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2edol"]
+radius = 303.832
 
 [node name="planets" type="Node2D"]
 script = ExtResource("1_ck4e8")
+
+[node name="jupiter" type="Sprite2D" parent="."]
+position = Vector2(745, 336)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_21hjo")
+
+[node name="Area2D" type="Area2D" parent="jupiter"]
+script = ExtResource("4_mwg06")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jupiter/Area2D"]
+shape = SubResource("CircleShape2D_2edol")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 50.0
+offset_top = 300.0
+offset_right = 120.0
+offset_bottom = 370.0
+text = "planet"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 160.0
+offset_top = 300.0
+offset_right = 230.0
+offset_bottom = 370.0
+text = "planet"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 270.0
+offset_top = 300.0
+offset_right = 340.0
+offset_bottom = 370.0
+text = "planet"
+
+[node name="Button4" type="Button" parent="."]
+offset_left = 380.0
+offset_top = 300.0
+offset_right = 450.0
+offset_bottom = 370.0
+text = "planet"
+
+[node name="Button5" type="Button" parent="."]
+offset_left = 490.0
+offset_top = 300.0
+offset_right = 560.0
+offset_bottom = 370.0
+text = "planet"
+
+[node name="Button6" type="Button" parent="."]
+offset_left = 600.0
+offset_top = 300.0
+offset_right = 670.0
+offset_bottom = 370.0
+text = "planet"
+
+[node name="Button7" type="Button" parent="."]
+offset_left = 820.0
+offset_top = 300.0
+offset_right = 890.0
+offset_bottom = 370.0
+text = "planet"
+
+[node name="Button8" type="Button" parent="."]
+offset_left = 930.0
+offset_top = 300.0
+offset_right = 1000.0
+offset_bottom = 370.0
+text = "planet"
+
+[node name="Button9" type="Button" parent="."]
+offset_left = 1040.0
+offset_top = 300.0
+offset_right = 1110.0
+offset_bottom = 370.0
+text = "planet"
