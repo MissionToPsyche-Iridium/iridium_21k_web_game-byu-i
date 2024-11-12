@@ -1,8 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://4qwjhi6s1wsb"]
+[gd_scene load_steps=14 format=3 uid="uid://4qwjhi6s1wsb"]
 
 [ext_resource type="Script" path="res://planets.gd" id="1_ck4e8"]
 [ext_resource type="Texture2D" uid="uid://byq8uox4x38gq" path="res://Art/Jupiter.png" id="2_21hjo"]
-[ext_resource type="Script" path="res://clickPlanet.gd" id="4_mwg06"]
+[ext_resource type="Script" path="res://clickJupiter.gd" id="3_v6lex"]
+[ext_resource type="Script" path="res://clickMercury.gd" id="4_2twvk"]
+[ext_resource type="Script" path="res://clickVenus.gd" id="5_s4itq"]
+[ext_resource type="Script" path="res://clickEarth.gd" id="6_7ufux"]
+[ext_resource type="Script" path="res://clickMars.gd" id="7_i5i0r"]
+[ext_resource type="Script" path="res://clickSaturn.gd" id="8_j1yxe"]
+[ext_resource type="Script" path="res://clickPsyche.gd" id="8_lnnc4"]
+[ext_resource type="Script" path="res://clickUranus.gd" id="9_pgr2v"]
+[ext_resource type="Script" path="res://clickNeptune.gd" id="10_ijvqg"]
+[ext_resource type="Script" path="res://clickPluto.gd" id="11_7cfhr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2edol"]
 radius = 303.832
@@ -10,76 +19,112 @@ radius = 303.832
 [node name="planets" type="Node2D"]
 script = ExtResource("1_ck4e8")
 
+[node name="mercury" type="Sprite2D" parent="."]
+position = Vector2(84, 336)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_21hjo")
+
+[node name="Area2D" type="Area2D" parent="mercury"]
+script = ExtResource("4_2twvk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mercury/Area2D"]
+shape = SubResource("CircleShape2D_2edol")
+
+[node name="venus" type="Sprite2D" parent="."]
+position = Vector2(195, 336)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_21hjo")
+
+[node name="Area2D" type="Area2D" parent="venus"]
+script = ExtResource("5_s4itq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="venus/Area2D"]
+shape = SubResource("CircleShape2D_2edol")
+
+[node name="earth" type="Sprite2D" parent="."]
+position = Vector2(307, 336)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_21hjo")
+
+[node name="Area2D" type="Area2D" parent="earth"]
+script = ExtResource("6_7ufux")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="earth/Area2D"]
+shape = SubResource("CircleShape2D_2edol")
+
+[node name="mars" type="Sprite2D" parent="."]
+position = Vector2(415, 336)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_21hjo")
+
+[node name="Area2D" type="Area2D" parent="mars"]
+script = ExtResource("7_i5i0r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mars/Area2D"]
+shape = SubResource("CircleShape2D_2edol")
+
+[node name="psyche" type="Sprite2D" parent="."]
+position = Vector2(522, 336)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_21hjo")
+
+[node name="Area2D" type="Area2D" parent="psyche"]
+script = ExtResource("8_lnnc4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="psyche/Area2D"]
+shape = SubResource("CircleShape2D_2edol")
+
 [node name="jupiter" type="Sprite2D" parent="."]
-position = Vector2(745, 336)
+position = Vector2(633, 336)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_21hjo")
 
 [node name="Area2D" type="Area2D" parent="jupiter"]
-script = ExtResource("4_mwg06")
+script = ExtResource("3_v6lex")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="jupiter/Area2D"]
 shape = SubResource("CircleShape2D_2edol")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 50.0
-offset_top = 300.0
-offset_right = 120.0
-offset_bottom = 370.0
-text = "planet"
+[node name="saturn" type="Sprite2D" parent="."]
+position = Vector2(745, 336)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_21hjo")
 
-[node name="Button2" type="Button" parent="."]
-offset_left = 160.0
-offset_top = 300.0
-offset_right = 230.0
-offset_bottom = 370.0
-text = "planet"
+[node name="Area2D" type="Area2D" parent="saturn"]
+script = ExtResource("8_j1yxe")
 
-[node name="Button3" type="Button" parent="."]
-offset_left = 270.0
-offset_top = 300.0
-offset_right = 340.0
-offset_bottom = 370.0
-text = "planet"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="saturn/Area2D"]
+shape = SubResource("CircleShape2D_2edol")
 
-[node name="Button4" type="Button" parent="."]
-offset_left = 380.0
-offset_top = 300.0
-offset_right = 450.0
-offset_bottom = 370.0
-text = "planet"
+[node name="uranus" type="Sprite2D" parent="."]
+position = Vector2(855, 336)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_21hjo")
 
-[node name="Button5" type="Button" parent="."]
-offset_left = 490.0
-offset_top = 300.0
-offset_right = 560.0
-offset_bottom = 370.0
-text = "planet"
+[node name="Area2D" type="Area2D" parent="uranus"]
+script = ExtResource("9_pgr2v")
 
-[node name="Button6" type="Button" parent="."]
-offset_left = 600.0
-offset_top = 300.0
-offset_right = 670.0
-offset_bottom = 370.0
-text = "planet"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="uranus/Area2D"]
+shape = SubResource("CircleShape2D_2edol")
 
-[node name="Button7" type="Button" parent="."]
-offset_left = 820.0
-offset_top = 300.0
-offset_right = 890.0
-offset_bottom = 370.0
-text = "planet"
+[node name="neptune" type="Sprite2D" parent="."]
+position = Vector2(965, 336)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_21hjo")
 
-[node name="Button8" type="Button" parent="."]
-offset_left = 930.0
-offset_top = 300.0
-offset_right = 1000.0
-offset_bottom = 370.0
-text = "planet"
+[node name="Area2D" type="Area2D" parent="neptune"]
+script = ExtResource("10_ijvqg")
 
-[node name="Button9" type="Button" parent="."]
-offset_left = 1040.0
-offset_top = 300.0
-offset_right = 1110.0
-offset_bottom = 370.0
-text = "planet"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="neptune/Area2D"]
+shape = SubResource("CircleShape2D_2edol")
+
+[node name="pluto" type="Sprite2D" parent="."]
+position = Vector2(1075, 336)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_21hjo")
+
+[node name="Area2D" type="Area2D" parent="pluto"]
+script = ExtResource("11_7cfhr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pluto/Area2D"]
+shape = SubResource("CircleShape2D_2edol")

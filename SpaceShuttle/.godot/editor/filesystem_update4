@@ -3,3 +3,13 @@ res://planets.tscn
 res://planets.gd
 res://jupiter.gd
 res://clickPlanet.gd
+res://clickJupiter.gd
+res://clickMercury.gd
+res://clickEarth.gd
+res://clickVenus.gd
+res://clickMars.gd
+res://clickPsyche.gd
+res://clickSaturn.gd
+res://clickUranus.gd
+res://clickNeptune.gd
+res://clickPluto.gd
