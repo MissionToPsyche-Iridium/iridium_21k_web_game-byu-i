@@ -1,5 +1,6 @@
 extends Node2D
 var player = preload("res://player.tscn")
+var HPlayer = preload("res://hard_player.tscn")
 var mouse = preload("res://mouse.tscn")
 var pc
 var ms
@@ -53,12 +54,19 @@ func _on_easy_button_pressed():
 # will take the user to the trivia portion of the game on medium mode.
 func _on_medium_button_pressed():
 	hide_difficulty_buttons()
-	tempLander()
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	ms = mouse.instantiate()
+	ms.setMedium()
+	add_child(ms)
+	#tempLander()
 
 # will take the user to the trivia portion of the game on hard mode.
 func _on_hard_button_pressed():
 	hide_difficulty_buttons()
-	tempLander()
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	ms = mouse.instantiate()
+	add_child(ms)
+	#tempLander()
 
 
 # shows Start, Tutorial and Credits Buttons.

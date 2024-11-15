@@ -1,5 +1,5 @@
-Button
 Sprite2D
+Button
 CollisionShape2D
 Area2D
 Label
