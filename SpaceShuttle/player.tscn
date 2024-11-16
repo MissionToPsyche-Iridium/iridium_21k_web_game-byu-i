@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1lwsuxp2udjv"]
+[gd_scene load_steps=4 format=3 uid="uid://b1lwsuxp2udjv"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_fvbno"]
 [ext_resource type="Texture2D" uid="uid://kkpxpa0tey06" path="res://Art/UFO1.0.png" id="2_ejpqe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wj5ek"]
+size = Vector2(18.6667, 18)
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_fvbno")
@@ -9,3 +12,10 @@ script = ExtResource("1_fvbno")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.175, 0.175)
 texture = ExtResource("2_ejpqe")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -2)
+scale = Vector2(3, 2)
+shape = SubResource("RectangleShape2D_wj5ek")

@@ -11,4 +11,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	#if Input.is_action_pressed("W") or Input.is_action_pressed("ui_up")
+	if Input.is_action_pressed("A") or Input.is_action_pressed("ui_left"):
+		rotation_degrees += 1
+	elif Input.is_action_pressed("D") or Input.is_action_pressed("ui_right"):
+		rotation_degrees += 1

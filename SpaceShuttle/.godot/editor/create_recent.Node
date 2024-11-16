@@ -1,7 +1,7 @@
-Sprite2D
-Button
 CollisionShape2D
 Area2D
-Label
 ColorRect
+Sprite2D
+Button
+Label
 AnimatedSprite2D

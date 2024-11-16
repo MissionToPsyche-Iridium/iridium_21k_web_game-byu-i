@@ -49,4 +49,5 @@ func _process(delta):
 	
 
 func destroy_rocket():
+	#write signal before queue_free
 	queue_free()

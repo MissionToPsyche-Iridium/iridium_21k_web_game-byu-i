@@ -1,10 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://depexsp4qiy14"]
+[gd_scene load_steps=5 format=3 uid="uid://depexsp4qiy14"]
 
 [ext_resource type="Script" path="res://hard_player.gd" id="1_w1blk"]
+[ext_resource type="Texture2D" uid="uid://xroaqqubcf1b" path="res://Art/Rocket Ship 1.0.png" id="2_ga2g5"]
+[ext_resource type="Texture2D" uid="uid://bx5fgg0arlppd" path="res://Art/Apollo 1.0.png" id="3_yg217"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtdiq"]
 
 [node name="HardPlayer" type="Node2D"]
 script = ExtResource("1_w1blk")
 
 [node name="RocketShip" type="Sprite2D" parent="."]
+texture = ExtResource("2_ga2g5")
 
 [node name="Apollo" type="Sprite2D" parent="."]
+texture = ExtResource("3_yg217")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_mtdiq")

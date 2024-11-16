@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccpv28imegxfg"]
+
+[ext_resource type="Script" path="res://surface.gd" id="1_y0wdx"]
+
+[node name="Surface" type="Node2D"]
+script = ExtResource("1_y0wdx")
