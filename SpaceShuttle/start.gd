@@ -49,7 +49,7 @@ func _on_easy_button_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	ms = mouse.instantiate()
 	add_child(ms)
-	#tempLander()
+	tempLander("easy")
 
 # will take the user to the trivia portion of the game on medium mode.
 func _on_medium_button_pressed():
@@ -94,10 +94,10 @@ func hide_difficulty_buttons():
 	$hardButton.hide()
 
 # spawns the lander in the top middle of the screen
-func tempLander():
+func tempLander(difficulty):
 	pc = player.instantiate()
 	pc.position = Vector2(600,20)
-	add_child(pc)
+	#add_child(pc)
 
 #func difficulty():
 #	$easy
