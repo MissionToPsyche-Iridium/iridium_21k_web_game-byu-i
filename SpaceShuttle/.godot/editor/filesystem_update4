@@ -1,13 +1,8 @@
 res://player.tscn
-res://hard_player.tscn
+res://player.gd
 res://main.tscn
 res://planets.tscn
 res://start.tscn
+res://hard_player.tscn
 res://mouse.tscn
-res://hard_player.gd
-res://ground.tscn
-res://surface.tscn
-res://surface.gd
-res://player.gd
-res://signalbus.gd
 res://start.gd

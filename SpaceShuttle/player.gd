@@ -1,40 +1,37 @@
 extends Node2D
 var ShipVelocity = Vector2()
+var MaxSpeedYPositive = 2
+var MaxSpeedYNegative = -1
+var MaxSpeedXPositive = 2
+var MaxSpeedXNegative = -2
+var gravity = .03
+var thrusterPower = .1
+var accelerationLeft = .05 
+var accelerationRight = .05 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-#func _process(delta):
-#	# makes the lander constantly move down at a constant speed
-#	position.y += .98
-#	if Input.is_action_pressed("W") or Input.is_action_pressed("ui_up"):
-#		position.y -= 4
-#	if Input.is_action_pressed("A") or Input.is_action_pressed("ui_left"):
-#		position.x -= 2
-#	elif Input.is_action_pressed("D") or Input.is_action_pressed("ui_right"):
-#		position.x += 2
-#	if position.y >= 560:
-#		destroy_rocket()
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func set_value(val):
+	MaxSpeedYPositive = val
 func _process(delta):
 	# makes the lander constantly move down at a constant speed
-	ShipVelocity.y += .03
+	ShipVelocity.y += gravity
 	if Input.is_action_pressed("W") or Input.is_action_pressed("ui_up"):
-		ShipVelocity.y -= .1
+		ShipVelocity.y -= thrusterPower
 	if Input.is_action_pressed("A") or Input.is_action_pressed("ui_left"):
-		ShipVelocity.x -= .05
+		ShipVelocity.x -= accelerationLeft
 	elif Input.is_action_pressed("D") or Input.is_action_pressed("ui_right"):
-		ShipVelocity.x += .05
-	if ShipVelocity.y > 2:
-		ShipVelocity.y = 2
-	if ShipVelocity.y < -1:
-		ShipVelocity.y = -1
-	if ShipVelocity.x> 2:
-		ShipVelocity.x= 2
-	if ShipVelocity.x< -2:
-		ShipVelocity.x= -2
+		ShipVelocity.x += accelerationRight
+	if ShipVelocity.y > MaxSpeedYPositive:
+		ShipVelocity.y = MaxSpeedYPositive
+	if ShipVelocity.y < MaxSpeedYNegative:
+		ShipVelocity.y = MaxSpeedYNegative
+	if ShipVelocity.x> MaxSpeedXPositive:
+		ShipVelocity.x= MaxSpeedXPositive
+	if ShipVelocity.x< MaxSpeedXNegative:
+		ShipVelocity.x= MaxSpeedXNegative
 	if ShipVelocity.x < 0 and position.x < 27:
 		ShipVelocity.x = 0
 	if ShipVelocity.x > 0 and position.x > 1124:
