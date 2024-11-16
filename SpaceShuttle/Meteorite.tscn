@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpwd23cjr7nmh"]
+
+[ext_resource type="Script" path="res://Meteorite.gd" id="1_urxfx"]
+
+[node name="ColorRect" type="ColorRect"]
+custom_minimum_size = Vector2(20, 20)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_urxfx")
