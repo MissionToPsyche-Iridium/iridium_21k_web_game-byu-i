@@ -1,8 +1,10 @@
-res://player.tscn
-res://player.gd
+res://trivia.gd
+res://start.tscn
 res://main.tscn
 res://planets.tscn
-res://start.tscn
+res://player.tscn
 res://hard_player.tscn
 res://mouse.tscn
+res://trivia.tscn
 res://start.gd
+res://Trivia.json

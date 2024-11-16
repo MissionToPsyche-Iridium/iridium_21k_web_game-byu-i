@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6qlso1fhp0kp"]
+[gd_scene load_steps=5 format=3 uid="uid://c6qlso1fhp0kp"]
 
 [ext_resource type="Script" path="res://start.gd" id="1_1ny8t"]
 [ext_resource type="PackedScene" uid="uid://ccpv28imegxfg" path="res://surface.tscn" id="2_4neht"]
+[ext_resource type="PackedScene" uid="uid://c6r0iyo5gp7si" path="res://trivia.tscn" id="3_tauyr"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_f02o3"]
+specular_color = Color(0, 0, 0, 1)
 
 [node name="Start" type="Node2D"]
 script = ExtResource("1_1ny8t")
@@ -73,18 +75,21 @@ offset_bottom = 355.0
 text = "HARD"
 
 [node name="topCockpit" type="Sprite2D" parent="."]
+visible = false
 show_behind_parent = true
 position = Vector2(575, 80)
 scale = Vector2(1165, 180)
 texture = SubResource("CanvasTexture_f02o3")
 
 [node name="bottomCockpit" type="Sprite2D" parent="."]
+visible = false
 show_behind_parent = true
 position = Vector2(575, 565)
 scale = Vector2(1165, 180)
 texture = SubResource("CanvasTexture_f02o3")
 
 [node name="spaceBackground" type="Sprite2D" parent="."]
+visible = false
 show_behind_parent = true
 position = Vector2(575, 325)
 scale = Vector2(1165, 660)
@@ -92,8 +97,14 @@ texture = SubResource("CanvasTexture_f02o3")
 
 [node name="Surface" parent="." instance=ExtResource("2_4neht")]
 
-[connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]
+[node name="Trivia" parent="." instance=ExtResource("3_tauyr")]
+offset_left = 300.0
+offset_top = 50.0
+offset_right = 300.0
+offset_bottom = 50.0
+
 [connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]
 [connection signal="pressed" from="tutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="creditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MusicButton" to="." method="_on_music_button_pressed"]
