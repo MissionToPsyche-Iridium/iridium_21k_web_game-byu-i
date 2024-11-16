@@ -5,11 +5,13 @@ var mouse = preload("res://mouse.tscn")
 var pc
 var ms
 var rng = RandomNumberGenerator
+var trivAnswer
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide_difficulty_buttons()
+	Signalbus.answer.connect(getTriviaAnswer)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -49,7 +51,9 @@ func _on_easy_button_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	ms = mouse.instantiate()
 	add_child(ms)
-	tempLander("easy")
+	$Trivia.getTriviaQuestion()
+	show_planets()
+	#tempLander("easy")
 
 # will take the user to the trivia portion of the game on medium mode.
 func _on_medium_button_pressed():
@@ -59,6 +63,8 @@ func _on_medium_button_pressed():
 	ms = mouse.instantiate()
 	ms.setMedium()
 	add_child(ms)
+	$Trivia.getTriviaQuestion()
+	show_planets()
 	#tempLander()
 
 # will take the user to the trivia portion of the game on hard mode.
@@ -68,6 +74,8 @@ func _on_hard_button_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	ms = mouse.instantiate()
 	add_child(ms)
+	$Trivia.getTriviaQuestion()
+	show_planets()
 	#tempLander()
 
 
@@ -94,6 +102,15 @@ func hide_difficulty_buttons():
 	$easyButton.hide()
 	$mediumButton.hide()
 	$hardButton.hide()
+
+func show_planets():
+	$planets.show()
+
+func hide_planets():
+	$planets.hide()
+
+func getTriviaAnswer(ans):
+	trivAnswer = ans
 
 # spawns the lander in the top middle of the screen
 func tempLander(difficulty):

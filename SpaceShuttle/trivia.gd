@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 var file_path = "res://Trivia.json"
 var triv
@@ -14,7 +14,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if prevQ.size() == 60:
+		emptyPrevQ()
 
 # Reads the file specified (Trivia)
 func read_json():
@@ -39,11 +40,12 @@ func getTriviaQuestion():
 	var questionNumber = rng.randi_range(0,60)
 	
 	# Check to make sure no questions is repeated twice
-	while(questionNumber in prevQ == true):
+	while((questionNumber in prevQ) == true):
 		questionNumber = rng.randi_range(0,60)
 	
 	# Add the previous question number to the list.  Make sure to add a way to delete, so that they
 	prevQ.append(questionNumber)
+	print(prevQ)
 	
 	if questionNumber < 10:
 		key += "00" + str(questionNumber)
@@ -54,3 +56,7 @@ func getTriviaQuestion():
 	key[2] = "A"
 	answer = triv[key]
 	$Label.text = question
+	Signalbus.emit_signal("answer",answer)
+
+func emptyPrevQ():
+	prevQ = []
