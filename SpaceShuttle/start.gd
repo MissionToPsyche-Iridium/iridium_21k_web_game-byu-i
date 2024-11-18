@@ -12,6 +12,7 @@ var trivAnswer
 func _ready() -> void:
 	hide_difficulty_buttons()
 	Signalbus.answer.connect(getTriviaAnswer)
+	Signalbus.landed_complete.connect(landed)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -118,7 +119,19 @@ func tempLander(difficulty):
 	pc.position = Vector2(600,20)
 	#add_child(pc)
 
+func landed():
+	#display button
+	$to_next.show()
+	$winner_label.show()
+	pass
+
 #func difficulty():
 #	$easy
 #	$med
 #	$hard
+
+
+func _on_to_next_pressed():
+	$to_next.hide()
+	$winner_label.hide()
+	pass # Replace with function body.

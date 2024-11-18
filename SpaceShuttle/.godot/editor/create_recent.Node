@@ -1,8 +1,8 @@
-Node2D
 Label
+Button
 CollisionShape2D
 Area2D
 ColorRect
+Node2D
 Sprite2D
-Button
 AnimatedSprite2D

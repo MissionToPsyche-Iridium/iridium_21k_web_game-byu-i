@@ -1,10 +1,13 @@
-res://start.tscn
-res://start.gd
+res://trivia.tscn
+res://player.gd
 res://main.tscn
 res://planets.tscn
+res://start.tscn
 res://player.tscn
 res://hard_player.tscn
 res://mouse.tscn
-res://trivia.tscn
-res://trivia.gd
 res://signalbus.gd
+res://surface.gd
+res://landing_pad.tscn
+res://surface.tscn
+res://start.gd
