@@ -97,6 +97,7 @@ scale = Vector2(1165, 660)
 texture = SubResource("CanvasTexture_f02o3")
 
 [node name="Surface" parent="." instance=ExtResource("2_4neht")]
+visible = false
 
 [node name="Trivia" parent="." instance=ExtResource("3_tauyr")]
 position = Vector2(576, 50)
@@ -122,8 +123,8 @@ text = "Congratulations"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]
+[connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="tutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="creditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MusicButton" to="." method="_on_music_button_pressed"]

@@ -6,6 +6,7 @@ var pc
 var ms
 var rng = RandomNumberGenerator
 var trivAnswer
+var difficulty
 
 
 # Called when the node enters the scene tree for the first time.
@@ -13,6 +14,7 @@ func _ready() -> void:
 	hide_difficulty_buttons()
 	Signalbus.answer.connect(getTriviaAnswer)
 	Signalbus.landed_complete.connect(landed)
+	Signalbus.start.connect(start)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,6 +50,7 @@ func _on_audio_button_pressed():
 # will take the user to the trivia portion of the game on easy mode.
 func _on_easy_button_pressed():
 	hide_difficulty_buttons()
+	difficulty = "Easy"
 	$Trivia.difficulty = "Easy"
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	ms = mouse.instantiate()
@@ -59,6 +62,7 @@ func _on_easy_button_pressed():
 # will take the user to the trivia portion of the game on medium mode.
 func _on_medium_button_pressed():
 	hide_difficulty_buttons()
+	difficulty = "Medium"
 	$Trivia.difficulty = "Medium"
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	ms = mouse.instantiate()
@@ -71,6 +75,7 @@ func _on_medium_button_pressed():
 # will take the user to the trivia portion of the game on hard mode.
 func _on_hard_button_pressed():
 	hide_difficulty_buttons()
+	difficulty = "Hard"
 	$Trivia.difficulty = "Hard"
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	ms = mouse.instantiate()
@@ -124,6 +129,14 @@ func landed():
 	$to_next.show()
 	$winner_label.show()
 	pass
+
+func start(planet):
+	$Surface.create_ground(difficulty)
+	$Surface.show()
+	$planets.hide()
+	remove_child(ms)
+	ms = null
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 #func difficulty():
 #	$easy

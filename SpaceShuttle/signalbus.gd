@@ -4,3 +4,5 @@ signal whateverUWant(variable)
 signal answer(ans)
 
 signal landed_complete()
+
+signal start(planet)

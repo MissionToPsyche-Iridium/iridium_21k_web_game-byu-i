@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int):
 	if event.is_action_pressed("clickPlanet"):
-		print("Mars")
+		Signalbus.emit_signal("start", "Mars")
