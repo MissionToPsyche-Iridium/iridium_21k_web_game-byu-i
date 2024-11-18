@@ -3,6 +3,7 @@ var ground = preload("res://ground.tscn")
 var test = preload("res://placement_test.tscn")
 var pad = preload("res://landing_pad.tscn")
 var rng = RandomNumberGenerator.new()
+var meteor = preload("res://Meteorite.tscn")
 var lp
 
 
@@ -35,6 +36,7 @@ func create_ground(diff):
 		add_child(tester)
 		xb += 100
 		z -= 1
+	$MeteoriteTimer.start()
 
 func setLandingPad(diff):
 	var x = rng.randi_range(0,1100)
@@ -58,3 +60,8 @@ func Mars():
 func Earth():
 	pass
 	#change ground color to green
+
+func _on_meteorite_timer_timeout():
+	print("Spawning meteorite1") # Debug
+	var meteorite = meteor.instantiate()
+	add_child(meteorite)
