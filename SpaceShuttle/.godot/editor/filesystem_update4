@@ -1,5 +1,4 @@
-res://surface.tscn
-res://surface.gd
+res://Meteorite.tscn
 res://main.tscn
 res://planets.tscn
 res://start.tscn
@@ -8,4 +7,6 @@ res://hard_player.tscn
 res://mouse.tscn
 res://trivia.tscn
 res://landing_pad.tscn
+res://surface.tscn
 res://placement_test.tscn
+res://Meteorite.gd

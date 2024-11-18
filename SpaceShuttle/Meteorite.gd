@@ -1,4 +1,4 @@
-extends ColorRect
+extends Node2D
 
 var speed = Vector2()
 
