@@ -24,10 +24,10 @@ position = Vector2(84, 336)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_21hjo")
 
-[node name="Area2D" type="Area2D" parent="mercury"]
+[node name="planet_area" type="Area2D" parent="mercury"]
 script = ExtResource("4_2twvk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="mercury/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mercury/planet_area"]
 shape = SubResource("CircleShape2D_2edol")
 
 [node name="venus" type="Sprite2D" parent="."]
@@ -35,10 +35,10 @@ position = Vector2(195, 336)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_21hjo")
 
-[node name="Area2D" type="Area2D" parent="venus"]
+[node name="planet_area" type="Area2D" parent="venus"]
 script = ExtResource("5_s4itq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="venus/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="venus/planet_area"]
 shape = SubResource("CircleShape2D_2edol")
 
 [node name="earth" type="Sprite2D" parent="."]
@@ -46,10 +46,10 @@ position = Vector2(307, 336)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_21hjo")
 
-[node name="Area2D" type="Area2D" parent="earth"]
+[node name="planet_area" type="Area2D" parent="earth"]
 script = ExtResource("6_7ufux")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="earth/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="earth/planet_area"]
 shape = SubResource("CircleShape2D_2edol")
 
 [node name="mars" type="Sprite2D" parent="."]
@@ -57,10 +57,10 @@ position = Vector2(415, 336)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_21hjo")
 
-[node name="Area2D" type="Area2D" parent="mars"]
+[node name="planet_area" type="Area2D" parent="mars"]
 script = ExtResource("7_i5i0r")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="mars/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mars/planet_area"]
 shape = SubResource("CircleShape2D_2edol")
 
 [node name="psyche" type="Sprite2D" parent="."]
@@ -68,10 +68,10 @@ position = Vector2(522, 336)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_21hjo")
 
-[node name="Area2D" type="Area2D" parent="psyche"]
+[node name="planet_area" type="Area2D" parent="psyche"]
 script = ExtResource("8_lnnc4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="psyche/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="psyche/planet_area"]
 shape = SubResource("CircleShape2D_2edol")
 
 [node name="jupiter" type="Sprite2D" parent="."]
@@ -79,10 +79,10 @@ position = Vector2(633, 336)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_21hjo")
 
-[node name="Area2D" type="Area2D" parent="jupiter"]
+[node name="planet_area" type="Area2D" parent="jupiter"]
 script = ExtResource("3_v6lex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="jupiter/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jupiter/planet_area"]
 shape = SubResource("CircleShape2D_2edol")
 
 [node name="saturn" type="Sprite2D" parent="."]
@@ -90,10 +90,10 @@ position = Vector2(745, 336)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_21hjo")
 
-[node name="Area2D" type="Area2D" parent="saturn"]
+[node name="planet_area" type="Area2D" parent="saturn"]
 script = ExtResource("8_j1yxe")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="saturn/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="saturn/planet_area"]
 shape = SubResource("CircleShape2D_2edol")
 
 [node name="uranus" type="Sprite2D" parent="."]
@@ -101,10 +101,10 @@ position = Vector2(855, 336)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_21hjo")
 
-[node name="Area2D" type="Area2D" parent="uranus"]
+[node name="planet_area" type="Area2D" parent="uranus"]
 script = ExtResource("9_pgr2v")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="uranus/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="uranus/planet_area"]
 shape = SubResource("CircleShape2D_2edol")
 
 [node name="neptune" type="Sprite2D" parent="."]
@@ -112,10 +112,10 @@ position = Vector2(965, 336)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_21hjo")
 
-[node name="Area2D" type="Area2D" parent="neptune"]
+[node name="planet_area" type="Area2D" parent="neptune"]
 script = ExtResource("10_ijvqg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="neptune/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="neptune/planet_area"]
 shape = SubResource("CircleShape2D_2edol")
 
 [node name="pluto" type="Sprite2D" parent="."]
@@ -123,8 +123,8 @@ position = Vector2(1075, 336)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_21hjo")
 
-[node name="Area2D" type="Area2D" parent="pluto"]
+[node name="planet_area" type="Area2D" parent="pluto"]
 script = ExtResource("11_7cfhr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pluto/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pluto/planet_area"]
 shape = SubResource("CircleShape2D_2edol")

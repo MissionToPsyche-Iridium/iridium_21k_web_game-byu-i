@@ -73,6 +73,8 @@ func _on_area_2d_area_entered(area: Area2D):
 	if area.get_name() == "lander_box":
 		landed_rocket()
 		print("landed")
+	elif area.get_name() == "planet_area":
+		pass
 	else:
 		#destroy_rocket()
 		print("dead")
