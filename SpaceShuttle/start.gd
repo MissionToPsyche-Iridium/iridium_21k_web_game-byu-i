@@ -52,11 +52,13 @@ func _on_easy_button_pressed():
 	hide_difficulty_buttons()
 	difficulty = "Easy"
 	$Trivia.difficulty = "Easy"
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	ms = mouse.instantiate()
-	add_child(ms)
-	$Trivia.getTriviaQuestion()
-	show_planets()
+	to_trivia()
+
+	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	#ms = mouse.instantiate()
+	#add_child(ms)
+	#$Trivia.getTriviaQuestion()
+	#show_planets()
 	#tempLander("easy")
 
 # will take the user to the trivia portion of the game on medium mode.
@@ -64,12 +66,13 @@ func _on_medium_button_pressed():
 	hide_difficulty_buttons()
 	difficulty = "Medium"
 	$Trivia.difficulty = "Medium"
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	ms = mouse.instantiate()
+	to_trivia()
+	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	#ms = mouse.instantiate()
 	ms.setMedium()
-	add_child(ms)
-	$Trivia.getTriviaQuestion()
-	show_planets()
+	#add_child(ms)
+	#$Trivia.getTriviaQuestion()
+	#show_planets()
 	#tempLander()
 
 # will take the user to the trivia portion of the game on hard mode.
@@ -77,11 +80,12 @@ func _on_hard_button_pressed():
 	hide_difficulty_buttons()
 	difficulty = "Hard"
 	$Trivia.difficulty = "Hard"
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	ms = mouse.instantiate()
-	add_child(ms)
-	$Trivia.getTriviaQuestion()
-	show_planets()
+	to_trivia()
+	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	#ms = mouse.instantiate()
+	#add_child(ms)
+	#$Trivia.getTriviaQuestion()
+	#show_planets()
 	#tempLander()
 
 
@@ -143,8 +147,18 @@ func start(planet):
 #	$med
 #	$hard
 
+func to_trivia():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	ms = mouse.instantiate()
+	add_child(ms)
+	$Trivia.getTriviaQuestion()
+	show_planets()
+
 
 func _on_to_next_pressed():
 	$to_next.hide()
 	$winner_label.hide()
+	
+	to_trivia()
+	
 	pass # Replace with function body.

@@ -45,10 +45,11 @@ func _process(delta):
 		position.x += ShipVelocity.x 
 		position.y += ShipVelocity.y
 		
-		if position.y >= 560:
+		if position.y >= 650:
 			destroy_rocket()
 	elif win == true:
-		lander_win()
+		ShipVelocity = 0
+		#lander_win()
 
 func destroy_rocket():
 	#write signal before queue_free
@@ -58,11 +59,14 @@ func destroy_rocket():
 
 func landed_rocket():
 	Signalbus.emit_signal("landed_complete")
+	win = true
 	#get_tree().paused = true
 	pass
 
-func lander_win():
-	pass
+#func lander_win():
+	#ShipVelocity = 0
+	##ShipVelocity.y = 0
+	#pass
 
 
 func _on_area_2d_area_entered(area: Area2D):
