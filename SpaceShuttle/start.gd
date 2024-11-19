@@ -14,6 +14,7 @@ func _ready() -> void:
 	hide_difficulty_buttons()
 	Signalbus.answer.connect(getTriviaAnswer)
 	Signalbus.landed_complete.connect(landed)
+	Signalbus.landed_failed.connect(crashLanded)
 	Signalbus.start.connect(start)
 
 
@@ -133,6 +134,12 @@ func landed():
 	$to_next.show()
 	$winner_label.show()
 	pass
+	
+func crashLanded():
+	#display button
+	$to_next.show()
+	$crash_label.show()
+	pass
 
 func start(planet):
 	$Surface.create_ground(difficulty)
@@ -158,6 +165,7 @@ func to_trivia():
 func _on_to_next_pressed():
 	$to_next.hide()
 	$winner_label.hide()
+	$crash_label.hide()
 	
 	to_trivia()
 	

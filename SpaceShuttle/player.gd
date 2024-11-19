@@ -53,6 +53,7 @@ func _process(delta):
 
 func destroy_rocket():
 	#write signal before queue_free
+	Signalbus.emit_signal("landed_failed")
 	queue_free()
 
 

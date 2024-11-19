@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx52vsn3hkb3c"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_3iraa"]
+[ext_resource type="PackedScene" uid="uid://c6qlso1fhp0kp" path="res://start.tscn" id="3_lf2pl"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_3iraa")
+
+[node name="Start" parent="." instance=ExtResource("3_lf2pl")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = 45.0
+offset_top = 134.0
+offset_right = 85.0
+offset_bottom = 174.0
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
