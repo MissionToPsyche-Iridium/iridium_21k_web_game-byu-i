@@ -12,4 +12,5 @@ func _ready():
 func _physics_process(delta):
 	position += speed * delta
 	if position.y > get_viewport().size.y or position.x < -30 or position.x > get_viewport().size.x:
+		Signalbus.emit_signal("remove_meteor", get_instance_id())
 		queue_free()

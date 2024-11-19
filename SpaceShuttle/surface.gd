@@ -1,16 +1,19 @@
 extends Node2D
-var ground = preload("res://ground.tscn")
 var test = preload("res://placement_test.tscn")
+var meteor = preload("res://Meteorite.tscn")
 var pad = preload("res://landing_pad.tscn")
 var player = preload("res://player.tscn")
+var ground = preload("res://ground.tscn")
 var rng = RandomNumberGenerator.new()
-var meteor = preload("res://Meteorite.tscn")
+var meteorites = []
+var testers = []
 var lp
+var p
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	Signalbus.remove_meteor.connect(remove_meteorite)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,16 +38,16 @@ func create_ground(diff):
 		tester.position = Vector2(x,y)
 		print(tester.position)
 		add_child(tester)
+		testers.append(tester)
 		xb += 100
 		z -= 1
-	$MeteoriteTimer.start()
-	
-	var p = player.instantiate()
+	$MeteoriteTimer.start()	
+	p = player.instantiate()
 	add_child(p)
 	p.position = Vector2(rng.randi_range(100,1000),rng.randi_range(100,150))
 
 func setLandingPad(diff):
-	var x = rng.randi_range(0,1100)
+	var x = rng.randi_range(100,1052)
 	var y
 	if diff == "Easy":
 		y = rng.randi_range(500,600)
@@ -70,3 +73,26 @@ func _on_meteorite_timer_timeout():
 	#print("Spawning meteorite1") # Debug
 	var meteorite = meteor.instantiate()
 	add_child(meteorite)
+	meteorites.append(meteorite)
+
+func remove_meteorite(IID):
+	var ind
+	for i in meteorites:
+		if i.get_instance_id() == IID:
+			ind = meteorites.find(i)
+	meteorites.remove_at(ind)
+
+func Player_landed():
+	p.position = lp.position + Vector2(0,-21)
+
+func clear_level(WoL):
+	$MeteoriteTimer.stop()
+	for i in meteorites:
+		i.queue_free()
+	for i in testers:
+		i.queue_free()
+	meteorites = []
+	testers = []
+	lp.queue_free()
+	if WoL == "Win":
+		p.queue_free()

@@ -7,6 +7,7 @@ var ms
 var rng = RandomNumberGenerator
 var trivAnswer
 var difficulty
+var WoL
 
 
 # Called when the node enters the scene tree for the first time.
@@ -133,13 +134,14 @@ func landed():
 	#display button
 	$to_next.show()
 	$winner_label.show()
-	pass
+	WoL = "Win"
+	$Surface.Player_landed()
 	
 func crashLanded():
 	#display button
 	$to_next.show()
 	$crash_label.show()
-	pass
+	WoL = "Lose"
 
 func start(planet):
 	$Surface.create_ground(difficulty)
@@ -166,7 +168,5 @@ func _on_to_next_pressed():
 	$to_next.hide()
 	$winner_label.hide()
 	$crash_label.hide()
-	
+	$Surface.clear_level(WoL)
 	to_trivia()
-	
-	pass # Replace with function body.
