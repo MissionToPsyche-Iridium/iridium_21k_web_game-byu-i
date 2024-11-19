@@ -90,7 +90,6 @@ func _on_hard_button_pressed():
 	#show_planets()
 	#tempLander()
 
-
 # shows Start, Tutorial and Credits Buttons.
 func show_stc_buttons():
 	$startButton.show()

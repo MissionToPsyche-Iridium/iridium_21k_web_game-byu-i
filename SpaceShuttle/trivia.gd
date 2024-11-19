@@ -16,8 +16,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# Empties the list of questions when it reaches 60
 	if prevQ.size() == 60:
 		emptyPrevQ()
+	
+	# Empties the list of bonus questions when it reaches 15	
+	if prevBQ.size() == 15:
+		emptyPrevBQ()
 
 # Reads the file specified (Trivia)
 func read_json():
@@ -27,16 +32,25 @@ func read_json():
 		var json = JSON.new()
 		triv = json.parse_string(content)
 
+# Reads the JSON file to get a trivia question and its answer
 func getTriviaQuestion():
 	var key
 	var qNum
+	
+	# Checks to do a bonus question every tenth question
 	if (prevQ.size() != 0) && (prevQ.size() % 10) == 0:
 		key = "TBQ"
 		qNum = rng.randi_range(1,15)
+		
+		# Make sure the bonus question is not repeated
 		while((qNum in prevBQ) == true):
 			qNum = rng.randi_range(1,15)
+		
+		# Adds the bonus question to the bonus question list	
 		prevBQ.append(qNum)
+	
 	else:
+		# Parsing info for establishing questions
 		key = "T"
 		if difficulty == "Easy":
 			key += "E"
@@ -46,24 +60,37 @@ func getTriviaQuestion():
 			key += "H"
 		key += "Q"
 		qNum = rng.randi_range(1,60)
+		
 		# Check to make sure no questions is repeated twice
 		while((qNum in prevQ) == true):
 			qNum = rng.randi_range(1,60)
-		# Add the previous question number to the list.  Make sure to add a way to delete, so that they
+		
+		# Add the previous question number to the list
 		prevQ.append(qNum)
+	
+	# Parsing info for establishing questions
 	if qNum < 10:
 		key += "00" + str(qNum)
+	
 	else:
 		key += "0" + str(qNum)
+	
+	# Parsing info for establishing answers
 	question = triv[key]
 	key[2] = "A"
 	answer = triv[key]
 	$Label.text = question
 	Signalbus.emit_signal("answer",answer)
 
+# Sets the list of questions to an empty list
 func emptyPrevQ():
 	prevQ = []
 
+# Sets the list of bonus questions to an empty list	
+func emptyPrevBQ():
+	prevBQ = []	
+
+# Tests to see if all the questions/answers are numbered correctly
 func test_json():
 	var num = 1
 	var diff = "E"

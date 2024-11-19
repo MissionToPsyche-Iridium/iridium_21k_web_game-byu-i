@@ -56,8 +56,6 @@ func destroy_rocket(type):
 	Signalbus.emit_signal("landed_failed",type)
 	queue_free()
 
-
-
 func landed_rocket():
 	Signalbus.emit_signal("landed_complete")
 	win = true
@@ -68,7 +66,6 @@ func landed_rocket():
 	#ShipVelocity = 0
 	##ShipVelocity.y = 0
 	#pass
-
 
 func _on_area_2d_area_entered(area: Area2D):
 	if area.get_name() == "lander_box":
