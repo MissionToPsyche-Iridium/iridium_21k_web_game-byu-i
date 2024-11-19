@@ -125,13 +125,14 @@ vertical_alignment = 1
 
 [node name="crash_label" type="Label" parent="."]
 visible = false
-offset_left = 461.0
+offset_left = 376.0
 offset_top = 237.0
-offset_right = 712.0
+offset_right = 776.0
 offset_bottom = 283.0
 text = "Oh No! you crashed!"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]

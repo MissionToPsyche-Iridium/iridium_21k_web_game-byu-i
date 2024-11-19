@@ -46,14 +46,14 @@ func _process(delta):
 		position.y += ShipVelocity.y
 		
 		if position.y >= 650:
-			destroy_rocket()
+			destroy_rocket("crashLanded")
 	elif win == true:
 		ShipVelocity = 0
 		#lander_win()
 
-func destroy_rocket():
+func destroy_rocket(type):
 	#write signal before queue_free
-	Signalbus.emit_signal("landed_failed")
+	Signalbus.emit_signal("landed_failed",type)
 	queue_free()
 
 
@@ -76,7 +76,8 @@ func _on_area_2d_area_entered(area: Area2D):
 		print("landed")
 	elif area.get_name() == "planet_area":
 		pass
+	elif area.get_name() == "Meteorite_Area":
+		destroy_rocket("hitMeteor")
 	else:
-		#destroy_rocket()
-		print("dead")
+		destroy_rocket("crashLanded")
 	pass # Replace with function body.

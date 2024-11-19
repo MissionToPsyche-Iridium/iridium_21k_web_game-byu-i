@@ -4,7 +4,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1v5d"]
 
-[node name="ColorRect" type="Node2D"]
+[node name="Meteorite" type="Node2D"]
 script = ExtResource("1_urxfx")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -20,8 +20,8 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Meteorite_Area" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Meteorite_Area"]
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_o1v5d")

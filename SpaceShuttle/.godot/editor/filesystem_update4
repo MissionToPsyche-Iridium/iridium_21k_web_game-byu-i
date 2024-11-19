@@ -1,15 +1,1 @@
-res://surface.tscn
-res://surface.gd
-res://start.tscn
-res://start.gd
-res://main.tscn
 res://planets.tscn
-res://player.tscn
-res://hard_player.tscn
-res://mouse.tscn
-res://trivia.tscn
-res://landing_pad.tscn
-res://placement_test.tscn
-res://Meteorite.tscn
-res://trivia.gd
-res://player.gd

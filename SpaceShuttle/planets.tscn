@@ -1,17 +1,25 @@
-[gd_scene load_steps=14 format=3 uid="uid://4qwjhi6s1wsb"]
+[gd_scene load_steps=22 format=3 uid="uid://4qwjhi6s1wsb"]
 
 [ext_resource type="Script" path="res://planets.gd" id="1_ck4e8"]
+[ext_resource type="Texture2D" uid="uid://d3fxv2fxce63t" path="res://Art/Mercury.png" id="2_7hpll"]
 [ext_resource type="Texture2D" uid="uid://byq8uox4x38gq" path="res://Art/Jupiter.png" id="2_21hjo"]
 [ext_resource type="Script" path="res://clickJupiter.gd" id="3_v6lex"]
 [ext_resource type="Script" path="res://clickMercury.gd" id="4_2twvk"]
+[ext_resource type="Texture2D" uid="uid://debwdnreowljr" path="res://Art/Venus.png" id="4_5g8t3"]
 [ext_resource type="Script" path="res://clickVenus.gd" id="5_s4itq"]
 [ext_resource type="Script" path="res://clickEarth.gd" id="6_7ufux"]
+[ext_resource type="Texture2D" uid="uid://c4k6ykuvjvx2d" path="res://Art/Earth.png" id="6_p2dpd"]
 [ext_resource type="Script" path="res://clickMars.gd" id="7_i5i0r"]
 [ext_resource type="Script" path="res://clickSaturn.gd" id="8_j1yxe"]
 [ext_resource type="Script" path="res://clickPsyche.gd" id="8_lnnc4"]
+[ext_resource type="Texture2D" uid="uid://bvl5jw6j632qy" path="res://Art/Mars.png" id="8_opfxb"]
 [ext_resource type="Script" path="res://clickUranus.gd" id="9_pgr2v"]
 [ext_resource type="Script" path="res://clickNeptune.gd" id="10_ijvqg"]
 [ext_resource type="Script" path="res://clickPluto.gd" id="11_7cfhr"]
+[ext_resource type="Texture2D" uid="uid://btqudweu6js0n" path="res://Art/Saturn.png" id="13_756cr"]
+[ext_resource type="Texture2D" uid="uid://cu4fvbqsggwcu" path="res://Art/Uranus.png" id="15_dk7pi"]
+[ext_resource type="Texture2D" uid="uid://dp35nwp7vxo3h" path="res://Art/Neptune.png" id="17_om7xn"]
+[ext_resource type="Texture2D" uid="uid://crgahrlg5i3ey" path="res://Art/Pluto.png" id="19_r3oir"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2edol"]
 radius = 303.832
@@ -20,9 +28,9 @@ radius = 303.832
 script = ExtResource("1_ck4e8")
 
 [node name="mercury" type="Sprite2D" parent="."]
-position = Vector2(84, 336)
-scale = Vector2(0.11, 0.11)
-texture = ExtResource("2_21hjo")
+position = Vector2(99, 231)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_7hpll")
 
 [node name="planet_area" type="Area2D" parent="mercury"]
 script = ExtResource("4_2twvk")
@@ -30,10 +38,26 @@ script = ExtResource("4_2twvk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mercury/planet_area"]
 shape = SubResource("CircleShape2D_2edol")
 
+[node name="Name" type="Label" parent="mercury"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -622.0
+offset_top = -340.0
+offset_right = -18.0
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 150
+text = "Mercury"
+metadata/_edit_use_anchors_ = true
+
 [node name="venus" type="Sprite2D" parent="."]
-position = Vector2(195, 336)
-scale = Vector2(0.11, 0.11)
-texture = ExtResource("2_21hjo")
+position = Vector2(156, 520)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("4_5g8t3")
 
 [node name="planet_area" type="Area2D" parent="venus"]
 script = ExtResource("5_s4itq")
@@ -41,10 +65,26 @@ script = ExtResource("5_s4itq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="venus/planet_area"]
 shape = SubResource("CircleShape2D_2edol")
 
+[node name="Name" type="Label" parent="venus"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -541.5
+offset_top = -340.0
+offset_right = -98.5
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 150
+text = "Venus"
+metadata/_edit_use_anchors_ = true
+
 [node name="earth" type="Sprite2D" parent="."]
-position = Vector2(307, 336)
-scale = Vector2(0.11, 0.11)
-texture = ExtResource("2_21hjo")
+position = Vector2(288, 412)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("6_p2dpd")
 
 [node name="planet_area" type="Area2D" parent="earth"]
 script = ExtResource("6_7ufux")
@@ -52,10 +92,26 @@ script = ExtResource("6_7ufux")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="earth/planet_area"]
 shape = SubResource("CircleShape2D_2edol")
 
+[node name="Name" type="Label" parent="earth"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -515.0
+offset_top = -340.0
+offset_right = -125.0
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 150
+text = "Earth"
+metadata/_edit_use_anchors_ = true
+
 [node name="mars" type="Sprite2D" parent="."]
-position = Vector2(415, 336)
-scale = Vector2(0.11, 0.11)
-texture = ExtResource("2_21hjo")
+position = Vector2(340, 176)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("8_opfxb")
 
 [node name="planet_area" type="Area2D" parent="mars"]
 script = ExtResource("7_i5i0r")
@@ -63,9 +119,25 @@ script = ExtResource("7_i5i0r")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mars/planet_area"]
 shape = SubResource("CircleShape2D_2edol")
 
+[node name="Name" type="Label" parent="mars"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -501.5
+offset_top = -340.0
+offset_right = -138.5
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 150
+text = "Mars"
+metadata/_edit_use_anchors_ = true
+
 [node name="psyche" type="Sprite2D" parent="."]
-position = Vector2(522, 336)
-scale = Vector2(0.11, 0.11)
+position = Vector2(426, 249)
+scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_21hjo")
 
 [node name="planet_area" type="Area2D" parent="psyche"]
@@ -74,9 +146,25 @@ script = ExtResource("8_lnnc4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="psyche/planet_area"]
 shape = SubResource("CircleShape2D_2edol")
 
+[node name="Name" type="Label" parent="psyche"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -571.0
+offset_top = -340.0
+offset_right = -69.0
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 150
+text = "Psyche"
+metadata/_edit_use_anchors_ = true
+
 [node name="jupiter" type="Sprite2D" parent="."]
-position = Vector2(633, 336)
-scale = Vector2(0.11, 0.11)
+position = Vector2(546, 335)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_21hjo")
 
 [node name="planet_area" type="Area2D" parent="jupiter"]
@@ -85,10 +173,25 @@ script = ExtResource("3_v6lex")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="jupiter/planet_area"]
 shape = SubResource("CircleShape2D_2edol")
 
+[node name="Name" type="Label" parent="jupiter"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -562.5
+offset_top = -340.0
+offset_right = -77.5
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 150
+text = "Jupiter"
+
 [node name="saturn" type="Sprite2D" parent="."]
-position = Vector2(745, 336)
-scale = Vector2(0.11, 0.11)
-texture = ExtResource("2_21hjo")
+position = Vector2(735, 404)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("13_756cr")
 
 [node name="planet_area" type="Area2D" parent="saturn"]
 script = ExtResource("8_j1yxe")
@@ -96,10 +199,26 @@ script = ExtResource("8_j1yxe")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="saturn/planet_area"]
 shape = SubResource("CircleShape2D_2edol")
 
+[node name="Name" type="Label" parent="saturn"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -562.0
+offset_top = -340.0
+offset_right = -78.0
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 150
+text = "Saturn"
+metadata/_edit_use_anchors_ = true
+
 [node name="uranus" type="Sprite2D" parent="."]
-position = Vector2(855, 336)
-scale = Vector2(0.11, 0.11)
-texture = ExtResource("2_21hjo")
+position = Vector2(897, 195)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("15_dk7pi")
 
 [node name="planet_area" type="Area2D" parent="uranus"]
 script = ExtResource("9_pgr2v")
@@ -107,10 +226,25 @@ script = ExtResource("9_pgr2v")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="uranus/planet_area"]
 shape = SubResource("CircleShape2D_2edol")
 
+[node name="Name" type="Label" parent="uranus"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -583.0
+offset_top = -340.0
+offset_right = -57.0
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 150
+text = "Uranus"
+
 [node name="neptune" type="Sprite2D" parent="."]
-position = Vector2(965, 336)
-scale = Vector2(0.11, 0.11)
-texture = ExtResource("2_21hjo")
+position = Vector2(1000, 476)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("17_om7xn")
 
 [node name="planet_area" type="Area2D" parent="neptune"]
 script = ExtResource("10_ijvqg")
@@ -118,13 +252,44 @@ script = ExtResource("10_ijvqg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="neptune/planet_area"]
 shape = SubResource("CircleShape2D_2edol")
 
+[node name="Name" type="Label" parent="neptune"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -636.5
+offset_top = -340.0
+offset_right = -3.5
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 150
+text = "Neptune"
+
 [node name="pluto" type="Sprite2D" parent="."]
-position = Vector2(1075, 336)
+position = Vector2(1103, 342)
 scale = Vector2(0.11, 0.11)
-texture = ExtResource("2_21hjo")
+texture = ExtResource("19_r3oir")
 
 [node name="planet_area" type="Area2D" parent="pluto"]
 script = ExtResource("11_7cfhr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pluto/planet_area"]
 shape = SubResource("CircleShape2D_2edol")
+
+[node name="Name" type="Label" parent="pluto"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -510.0
+offset_top = -340.0
+offset_right = -130.0
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 150
+text = "Pluto"
+metadata/_edit_use_anchors_ = true

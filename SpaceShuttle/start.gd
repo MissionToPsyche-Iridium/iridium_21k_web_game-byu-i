@@ -137,13 +137,18 @@ func landed():
 	WoL = "Win"
 	$Surface.Player_landed()
 	
-func crashLanded():
+func crashLanded(type):
 	#display button
 	$to_next.show()
+	if type == "hitMeteor":
+		$crash_label.text = "Oh No! You got hit by a meteor!\nTry again?"
+	elif type == "crashLanded":
+		$crash_label.text = "Oh No! You crash landed on the planet!\nTry again?"
 	$crash_label.show()
 	WoL = "Lose"
 
 func start(planet):
+	$Trivia.hide()
 	$Surface.create_ground(difficulty)
 	$Surface.show()
 	$planets.hide()
@@ -169,4 +174,5 @@ func _on_to_next_pressed():
 	$winner_label.hide()
 	$crash_label.hide()
 	$Surface.clear_level(WoL)
+	$Trivia.show()
 	to_trivia()
