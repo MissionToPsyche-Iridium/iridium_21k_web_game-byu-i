@@ -2,6 +2,7 @@ extends Node2D
 var ground = preload("res://ground.tscn")
 var test = preload("res://placement_test.tscn")
 var pad = preload("res://landing_pad.tscn")
+var player = preload("res://player.tscn")
 var rng = RandomNumberGenerator.new()
 var meteor = preload("res://Meteorite.tscn")
 var lp
@@ -37,6 +38,10 @@ func create_ground(diff):
 		xb += 100
 		z -= 1
 	$MeteoriteTimer.start()
+	
+	var p = player.instantiate()
+	add_child(p)
+	p.position = Vector2(rng.randi_range(100,1000),rng.randi_range(100,150))
 
 func setLandingPad(diff):
 	var x = rng.randi_range(0,1100)
@@ -62,6 +67,6 @@ func Earth():
 	#change ground color to green
 
 func _on_meteorite_timer_timeout():
-	print("Spawning meteorite1") # Debug
+	#print("Spawning meteorite1") # Debug
 	var meteorite = meteor.instantiate()
 	add_child(meteorite)

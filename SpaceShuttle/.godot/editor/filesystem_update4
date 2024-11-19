@@ -1,4 +1,3 @@
-res://Meteorite.tscn
 res://main.tscn
 res://planets.tscn
 res://start.tscn
@@ -9,4 +8,8 @@ res://trivia.tscn
 res://landing_pad.tscn
 res://surface.tscn
 res://placement_test.tscn
-res://Meteorite.gd
+res://Meteorite.tscn
+res://player.gd
+res://clickJupiter.gd
+res://start.gd
+res://surface.gd

@@ -54,6 +54,8 @@ func destroy_rocket():
 	#write signal before queue_free
 	queue_free()
 
+
+
 func landed_rocket():
 	Signalbus.emit_signal("landed_complete")
 	#get_tree().paused = true
@@ -61,3 +63,13 @@ func landed_rocket():
 
 func lander_win():
 	pass
+
+
+func _on_area_2d_area_entered(area: Area2D):
+	if area.get_name() == "lander_box":
+		landed_rocket()
+		print("landed")
+	else:
+		#destroy_rocket()
+		print("dead")
+	pass # Replace with function body.
