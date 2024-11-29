@@ -134,8 +134,26 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]
+[node name="returnButton" type="Button" parent="."]
+visible = false
+offset_left = 500.0
+offset_top = 370.0
+offset_right = 650.0
+offset_bottom = 445.0
+text = "MAIN MENU"
+
+[node name="disclaimer" type="Label" parent="."]
+visible = false
+offset_left = 20.0
+offset_top = 470.0
+offset_right = 1130.0
+offset_bottom = 627.0
+text = "This work was created in partial fulfillment of Brigham Young University - Idaho Capstone Course “CSE 397″. The work is a result of the Psyche Student Collaborations component of NASA’s Psyche Mission (https://psyche.asu.edu). “Psyche: A Journey to a Metal World” [Contract number NNM16AA09C] is part of the NASA Discovery Program mission to solar system targets. Trade names and trademarks of ASU and NASA are used in this work for identification only. Their usage does not constitute an official endorsement, either expressed or implied, by Arizona State University or National Aeronautics and Space Administration. The content is solely the responsibility of the authors and does not necessarily represent the official views of ASU or NASA."
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]
 [connection signal="pressed" from="tutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="creditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MusicButton" to="." method="_on_music_button_pressed"]
@@ -144,3 +162,4 @@ autowrap_mode = 2
 [connection signal="pressed" from="mediumButton" to="." method="_on_medium_button_pressed"]
 [connection signal="pressed" from="hardButton" to="." method="_on_hard_button_pressed"]
 [connection signal="pressed" from="to_next" to="." method="_on_to_next_pressed"]
+[connection signal="pressed" from="returnButton" to="." method="_on_return_button_pressed"]

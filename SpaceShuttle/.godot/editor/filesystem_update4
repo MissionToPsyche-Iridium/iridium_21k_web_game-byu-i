@@ -1,10 +1,5 @@
-res://start.tscn
-res://trivia.gd
-res://clickMercury.gd
-res://clickNeptune.gd
-res://clickEarth.gd
-res://player.gd
 res://start.gd
+res://start.tscn
 res://main.tscn
 res://planets.tscn
 res://player.tscn
@@ -15,4 +10,3 @@ res://landing_pad.tscn
 res://surface.tscn
 res://placement_test.tscn
 res://Meteorite.tscn
-res://planets.gd

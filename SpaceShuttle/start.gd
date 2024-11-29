@@ -39,6 +39,14 @@ func _on_tutorial_button_pressed():
 # will display credits then return the user back to the start screen
 func _on_credits_button_pressed():
 	hide_stc_buttons()
+	$returnButton.show()
+	$disclaimer.show()
+	pass
+
+func _on_return_button_pressed():
+	show_stc_buttons()
+	$returnButton.hide()
+	$disclaimer.hide()
 	pass
 
 # toggles the mute button to either mute or unmute.

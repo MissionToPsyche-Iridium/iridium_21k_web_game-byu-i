@@ -1,9 +1,9 @@
 Label
+Button
 CollisionShape2D
 Area2D
 ColorRect
 Node2D
 Timer
-Button
 Sprite2D
 AnimatedSprite2D
