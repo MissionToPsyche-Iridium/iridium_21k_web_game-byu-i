@@ -3,6 +3,7 @@ var test = preload("res://placement_test.tscn")
 var meteor = preload("res://Meteorite.tscn")
 var pad = preload("res://landing_pad.tscn")
 var player = preload("res://player.tscn")
+var Hplayer = preload("res://hard_player.tscn")
 var ground = preload("res://ground.tscn")
 var rng = RandomNumberGenerator.new()
 var meteorites = []
@@ -42,7 +43,12 @@ func create_ground(diff):
 		xb += 100
 		z -= 1
 	$MeteoriteTimer.start()	
-	p = player.instantiate()
+	if diff == "Easy":
+		p = player.instantiate()
+	if diff == "Medium":
+		p = Hplayer.instantiate()
+	if diff == "Hard":
+		p = Hplayer.instantiate()
 	add_child(p)
 	p.position = Vector2(rng.randi_range(100,1000),rng.randi_range(100,150))
 

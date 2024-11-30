@@ -1,0 +1,165 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6qlso1fhp0kp"]
+
+[ext_resource type="Script" path="res://start.gd" id="1_1ny8t"]
+[ext_resource type="PackedScene" uid="uid://ccpv28imegxfg" path="res://surface.tscn" id="2_4neht"]
+[ext_resource type="PackedScene" uid="uid://c6r0iyo5gp7si" path="res://trivia.tscn" id="3_tauyr"]
+[ext_resource type="PackedScene" uid="uid://4qwjhi6s1wsb" path="res://planets.tscn" id="4_f23nt"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_f02o3"]
+specular_color = Color(0, 0, 0, 1)
+
+[node name="Start" type="Node2D"]
+script = ExtResource("1_1ny8t")
+
+[node name="startButton" type="Button" parent="."]
+top_level = true
+offset_left = 500.0
+offset_top = 190.0
+offset_right = 650.0
+offset_bottom = 265.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "START"
+
+[node name="tutorialButton" type="Button" parent="."]
+top_level = true
+offset_left = 500.0
+offset_top = 280.0
+offset_right = 650.0
+offset_bottom = 355.0
+text = "TUTORIAL"
+
+[node name="creditsButton" type="Button" parent="."]
+top_level = true
+offset_left = 500.0
+offset_top = 370.0
+offset_right = 650.0
+offset_bottom = 445.0
+text = "CREDITS"
+
+[node name="MusicButton" type="Button" parent="."]
+top_level = true
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AudioButton" type="Button" parent="."]
+top_level = true
+offset_left = 50.0
+offset_top = 10.0
+offset_right = 80.0
+offset_bottom = 40.0
+
+[node name="easyButton" type="Button" parent="."]
+top_level = true
+offset_left = 335.0
+offset_top = 280.0
+offset_right = 485.0
+offset_bottom = 355.0
+text = "EASY"
+
+[node name="mediumButton" type="Button" parent="."]
+top_level = true
+offset_left = 500.0
+offset_top = 280.0
+offset_right = 650.0
+offset_bottom = 355.0
+text = "MEDIUM"
+
+[node name="hardButton" type="Button" parent="."]
+top_level = true
+offset_left = 665.0
+offset_top = 280.0
+offset_right = 815.0
+offset_bottom = 355.0
+text = "HARD"
+
+[node name="topCockpit" type="Sprite2D" parent="."]
+visible = false
+show_behind_parent = true
+position = Vector2(575, 80)
+scale = Vector2(1165, 180)
+texture = SubResource("CanvasTexture_f02o3")
+
+[node name="bottomCockpit" type="Sprite2D" parent="."]
+visible = false
+show_behind_parent = true
+position = Vector2(575, 565)
+scale = Vector2(1165, 180)
+texture = SubResource("CanvasTexture_f02o3")
+
+[node name="spaceBackground" type="Sprite2D" parent="."]
+visible = false
+show_behind_parent = true
+position = Vector2(575, 325)
+scale = Vector2(1165, 660)
+texture = SubResource("CanvasTexture_f02o3")
+
+[node name="Surface" parent="." instance=ExtResource("2_4neht")]
+visible = false
+
+[node name="Trivia" parent="." instance=ExtResource("3_tauyr")]
+position = Vector2(576, 50)
+
+[node name="planets" parent="." instance=ExtResource("4_f23nt")]
+visible = false
+
+[node name="to_next" type="Button" parent="."]
+visible = false
+offset_left = 477.0
+offset_top = 308.0
+offset_right = 687.0
+offset_bottom = 451.0
+text = "Back to Trivia"
+
+[node name="winner_label" type="Label" parent="."]
+visible = false
+offset_left = 461.0
+offset_top = 237.0
+offset_right = 712.0
+offset_bottom = 283.0
+text = "Congratulations"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="crash_label" type="Label" parent="."]
+visible = false
+offset_left = 376.0
+offset_top = 237.0
+offset_right = 776.0
+offset_bottom = 283.0
+text = "Oh No! you crashed!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="returnButton" type="Button" parent="."]
+visible = false
+offset_left = 500.0
+offset_top = 370.0
+offset_right = 650.0
+offset_bottom = 445.0
+text = "MAIN MENU"
+
+[node name="disclaimer" type="Label" parent="."]
+visible = false
+offset_left = 20.0
+offset_top = 470.0
+offset_right = 1130.0
+offset_bottom = 627.0
+text = "This work was created in partial fulfillment of Brigham Young University - Idaho Capstone Course “CSE 397″. The work is a result of the Psyche Student Collaborations component of NASA’s Psyche Mission (https://psyche.asu.edu). “Psyche: A Journey to a Metal World” [Contract number NNM16AA09C] is part of the NASA Discovery Program mission to solar system targets. Trade names and trademarks of ASU and NASA are used in this work for identification only. Their usage does not constitute an official endorsement, either expressed or implied, by Arizona State University or National Aeronautics and Space Administration. The content is solely the responsibility of the authors and does not necessarily represent the official views of ASU or NASA."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]
+[connection signal="pressed" from="tutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="creditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MusicButton" to="." method="_on_music_button_pressed"]
+[connection signal="pressed" from="AudioButton" to="." method="_on_audio_button_pressed"]
+[connection signal="pressed" from="easyButton" to="." method="_on_easy_button_pressed"]
+[connection signal="pressed" from="mediumButton" to="." method="_on_medium_button_pressed"]
+[connection signal="pressed" from="hardButton" to="." method="_on_hard_button_pressed"]
+[connection signal="pressed" from="to_next" to="." method="_on_to_next_pressed"]
+[connection signal="pressed" from="returnButton" to="." method="_on_return_button_pressed"]
