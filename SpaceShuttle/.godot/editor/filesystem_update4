@@ -9,5 +9,4 @@ res://landing_pad.tscn
 res://surface.tscn
 res://placement_test.tscn
 res://Meteorite.tscn
-res://hard_player.gd
 res://surface.gd

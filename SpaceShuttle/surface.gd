@@ -86,7 +86,7 @@ func remove_meteorite(IID):
 	for i in meteorites:
 		if i.get_instance_id() == IID:
 			ind = meteorites.find(i)
-	meteorites.remove_at(ind)
+			meteorites.remove_at(ind)
 
 func Player_landed():
 	p.position = lp.position + Vector2(0,-21)
