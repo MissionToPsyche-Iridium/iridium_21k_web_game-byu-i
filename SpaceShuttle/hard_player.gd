@@ -12,11 +12,10 @@ var accelerationRight = .05
 var win = false
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	if difficulty == "Medium":
-		$Apollo.hide()
-	elif difficulty == "Hard":
+func _ready():
+	if difficulty == "Hard":
 		$RocketShip.hide()
+		$Apollo.show()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

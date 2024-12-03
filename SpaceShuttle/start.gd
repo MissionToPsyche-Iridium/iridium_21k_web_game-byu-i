@@ -63,7 +63,6 @@ func _on_easy_button_pressed():
 	difficulty = "Easy"
 	$Trivia.difficulty = "Easy"
 	to_trivia()
-
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	#ms = mouse.instantiate()
 	#add_child(ms)
@@ -79,7 +78,6 @@ func _on_medium_button_pressed():
 	to_trivia()
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	#ms = mouse.instantiate()
-	ms.setMedium()
 	#add_child(ms)
 	#$Trivia.getTriviaQuestion()
 	#show_planets()
@@ -172,6 +170,10 @@ func to_trivia():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	ms = mouse.instantiate()
 	add_child(ms)
+	if difficulty == "Medium":
+		ms.setMedium()
+	elif difficulty == "Hard":
+		ms.setMedium()
 	$Trivia.getTriviaQuestion()
 	show_planets()
 

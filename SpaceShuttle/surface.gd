@@ -49,6 +49,7 @@ func create_ground(diff):
 		p = Hplayer.instantiate()
 	if diff == "Hard":
 		p = Hplayer.instantiate()
+		p.difficulty = "Hard"
 	add_child(p)
 	p.position = Vector2(rng.randi_range(100,1000),rng.randi_range(100,150))
 
