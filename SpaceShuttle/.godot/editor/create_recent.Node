@@ -1,8 +1,8 @@
+ColorRect
 Label
 Button
 CollisionShape2D
 Area2D
-ColorRect
 Node2D
 Timer
 Sprite2D

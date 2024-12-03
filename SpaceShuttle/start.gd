@@ -8,7 +8,7 @@ var rng = RandomNumberGenerator
 var trivAnswer
 var difficulty
 var WoL
-
+var bonus
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -126,8 +126,9 @@ func show_planets():
 func hide_planets():
 	$planets.hide()
 
-func getTriviaAnswer(ans):
+func getTriviaAnswer(ans, bone):
 	trivAnswer = ans
+	bonus = bone
 
 # spawns the lander in the top middle of the screen
 func tempLander(difficulty):
@@ -153,6 +154,16 @@ func crashLanded(type):
 	WoL = "Lose"
 
 func start(planet):
+	if bonus == true:
+		if (planet in trivAnswer) == true:
+			pass #correct
+		else:
+			pass #incorrect
+	else:
+		if planet == trivAnswer:
+			pass #Correct!
+		else:
+			pass #Incorrect
 	$Trivia.hide()
 	$Surface.create_ground(difficulty)
 	$Surface.show()

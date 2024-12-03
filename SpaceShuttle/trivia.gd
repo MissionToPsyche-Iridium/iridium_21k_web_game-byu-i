@@ -36,10 +36,11 @@ func read_json():
 func getTriviaQuestion():
 	var key
 	var qNum
-	
+	var bonus = false
 	# Checks to do a bonus question every tenth question
 	if (prevQ.size() != 0) && (prevQ.size() % 10) == 0:
 		key = "TBQ"
+		bonus = true
 		qNum = rng.randi_range(1,15)
 		
 		# Make sure the bonus question is not repeated
@@ -80,7 +81,7 @@ func getTriviaQuestion():
 	key[2] = "A"
 	answer = triv[key]
 	$Label.text = question
-	Signalbus.emit_signal("answer",answer)
+	Signalbus.emit_signal("answer",answer, bonus)
 
 # Sets the list of questions to an empty list
 func emptyPrevQ():

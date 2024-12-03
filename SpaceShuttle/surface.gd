@@ -103,3 +103,14 @@ func clear_level(WoL):
 	lp.queue_free()
 	if WoL == "Win":
 		p.queue_free()
+
+func stars():
+	var x = rng.randi_range(50,1100)
+	var y = rng.randi_range(50,600)
+	var minXB 
+	var maxXB
+	var minYB
+	var maxYB
+	while x >= minXB & x <= maxXB & y >= minYB & y <= maxYB:
+		x = rng.randi_range(50,1100)
+		y = rng.randi_range(50,600)
