@@ -9,6 +9,7 @@ var trivAnswer
 var difficulty
 var WoL
 var bonus
+var score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,6 +19,10 @@ func _ready() -> void:
 	Signalbus.landed_failed.connect(crashLanded)
 	Signalbus.start.connect(start)
 
+
+func update_score_display():
+	$ScoreLabel.text = "Score: %d" % score
+	#print(score)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -63,6 +68,7 @@ func _on_easy_button_pressed():
 	difficulty = "Easy"
 	$Trivia.difficulty = "Easy"
 	to_trivia()
+	$ScoreLabel.show()
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	#ms = mouse.instantiate()
 	#add_child(ms)
@@ -76,6 +82,7 @@ func _on_medium_button_pressed():
 	difficulty = "Medium"
 	$Trivia.difficulty = "Medium"
 	to_trivia()
+	$ScoreLabel.show()
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	#ms = mouse.instantiate()
 	#add_child(ms)
@@ -89,6 +96,7 @@ func _on_hard_button_pressed():
 	difficulty = "Hard"
 	$Trivia.difficulty = "Hard"
 	to_trivia()
+	$ScoreLabel.show()
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	#ms = mouse.instantiate()
 	#add_child(ms)
@@ -142,6 +150,13 @@ func landed():
 	$winner_label.show()
 	WoL = "Win"
 	$Surface.Player_landed()
+	if difficulty == "Hard":
+		score +=3
+	elif difficulty == "Medium":
+		score += 2
+	else:
+		score +=1
+	update_score_display()
 	
 func crashLanded(type):
 	#display button
@@ -152,6 +167,11 @@ func crashLanded(type):
 		$crash_label.text = "Oh No! You crash landed on the planet!\nTry again?"
 	$crash_label.show()
 	WoL = "Lose"
+	if difficulty == "Hard":
+		score -=2
+	elif difficulty == "Medium":
+		score -= 1
+	update_score_display()
 
 func start(planet):
 	if bonus == true:

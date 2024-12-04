@@ -152,8 +152,16 @@ text = "This work was created in partial fulfillment of Brigham Young University
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]
+[node name="ScoreLabel" type="Label" parent="."]
+visible = false
+offset_left = 1074.0
+offset_top = 2.0
+offset_right = 1135.0
+offset_bottom = 25.0
+text = "Score: 0"
+
 [connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]
 [connection signal="pressed" from="tutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="creditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MusicButton" to="." method="_on_music_button_pressed"]
