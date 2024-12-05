@@ -14,4 +14,3 @@ func hide_planets_buttons():
 
 func show_planets_buttons():
 	pass
-	

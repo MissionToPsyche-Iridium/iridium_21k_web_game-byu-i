@@ -11,11 +11,9 @@ var testers = []
 var lp
 var p
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Signalbus.remove_meteor.connect(remove_meteorite)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -31,10 +29,15 @@ func create_ground(diff):
 	while z > 0:
 		var x = rng.randi_range(xb,xb+100)
 		var y
-		if diff == "Easy":
-			y = rng.randi_range(500,600)
-		else:
-			y = rng.randi_range(300,600)
+		
+		match diff:
+			"Easy":
+				y = rng.randi_range(500,600)
+			"Medium":
+				y = rng.randi_range(300,600)
+			"Hard":
+				y = rng.randi_range(300,600)
+				
 		var tester = test.instantiate()
 		tester.position = Vector2(x,y)
 		print(tester.position)
@@ -43,23 +46,31 @@ func create_ground(diff):
 		xb += 100
 		z -= 1
 	$MeteoriteTimer.start()	
-	if diff == "Easy":
-		p = player.instantiate()
-	if diff == "Medium":
-		p = Hplayer.instantiate()
-	if diff == "Hard":
-		p = Hplayer.instantiate()
-		p.difficulty = "Hard"
+	
+	match diff:
+		"Easy":
+			p = player.instantiate()
+		"Medium":
+			p = Hplayer.instantiate()
+		"Hard":
+			p = Hplayer.instantiate()
+			p.difficulty = "Hard"
+			
 	add_child(p)
 	p.position = Vector2(rng.randi_range(100,1000),rng.randi_range(100,150))
 
 func setLandingPad(diff):
 	var x = rng.randi_range(100,1052)
 	var y
-	if diff == "Easy":
-		y = rng.randi_range(500,600)
-	else:
-		y = rng.randi_range(400,640)
+	
+	match diff:
+		"Easy":
+			y = rng.randi_range(500,600)
+		"Medium":
+			y = rng.randi_range(400,640)
+		"Hard":
+			y = rng.randi_range(400,640)
+			
 	lp = pad.instantiate()
 	lp.position = Vector2(x,y)
 	add_child(lp)

@@ -107,9 +107,9 @@ visible = false
 
 [node name="to_next" type="Button" parent="."]
 visible = false
-offset_left = 477.0
+offset_left = 470.0
 offset_top = 308.0
-offset_right = 687.0
+offset_right = 680.0
 offset_bottom = 451.0
 text = "Back to Trivia"
 
@@ -215,6 +215,14 @@ offset_right = 1135.0
 offset_bottom = 25.0
 text = "Score: 0"
 
+[node name="StartLander" type="Button" parent="."]
+visible = false
+offset_left = 482.5
+offset_top = 300.0
+offset_right = 669.5
+offset_bottom = 331.0
+text = "Begin landing protocol."
+
 [connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]
 [connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="tutorialButton" to="." method="_on_tutorial_button_pressed"]
@@ -226,3 +234,4 @@ text = "Score: 0"
 [connection signal="pressed" from="hardButton" to="." method="_on_hard_button_pressed"]
 [connection signal="pressed" from="to_next" to="." method="_on_to_next_pressed"]
 [connection signal="pressed" from="returnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="StartLander" to="." method="playLander"]

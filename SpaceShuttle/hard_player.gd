@@ -17,7 +17,6 @@ func _ready():
 		$RocketShip.hide()
 		$Apollo.show()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	ShipVelocity.y += gravity
@@ -66,7 +65,6 @@ func _process(delta: float) -> void:
 	position.x += ShipVelocity.x 
 	position.y += ShipVelocity.y
 	
-		
 	if position.y >= 650:
 			destroy_rocket("crashLanded")
 	elif win == true:

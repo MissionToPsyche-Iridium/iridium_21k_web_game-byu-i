@@ -19,7 +19,6 @@ func _ready() -> void:
 	Signalbus.landed_failed.connect(crashLanded)
 	Signalbus.start.connect(start)
 
-
 func update_score_display():
 	$ScoreLabel.text = "Score: %d" % score
 	#print(score)
@@ -31,7 +30,7 @@ func _process(delta: float) -> void:
 func Play():
 	pass
 
-# Hides buttons and shows difficutly options.
+# Hides buttons and shows difficutly options
 func _on_start_button_pressed():
 	hide_stc_buttons()
 	show_diffculty_buttons()
@@ -41,7 +40,7 @@ func _on_tutorial_button_pressed():
 	hide_stc_buttons()
 	pass
 
-# will display credits then return the user back to the start screen
+# Will display credits then return the user back to the start screen
 func _on_credits_button_pressed():
 	hide_stc_buttons()
 	$returnButton.show()
@@ -54,15 +53,15 @@ func _on_return_button_pressed():
 	$disclaimer.hide()
 	pass
 
-# toggles the mute button to either mute or unmute.
+# Toggles the mute button to either mute or unmute
 func _on_music_button_pressed():
 	pass # Replace with function body.
 
-# toggles the audio effects button to either mute or unmute.
+# Toggles the audio effects button to either mute or unmute
 func _on_audio_button_pressed():
 	pass # Replace with function body.
 
-# will take the user to the trivia portion of the game on easy mode.
+# Will take the user to the trivia portion of the game on easy mode
 func _on_easy_button_pressed():
 	hide_difficulty_buttons()
 	difficulty = "Easy"
@@ -76,7 +75,7 @@ func _on_easy_button_pressed():
 	#show_planets()
 	#tempLander("easy")
 
-# will take the user to the trivia portion of the game on medium mode.
+# Will take the user to the trivia portion of the game on medium mode
 func _on_medium_button_pressed():
 	hide_difficulty_buttons()
 	difficulty = "Medium"
@@ -90,7 +89,7 @@ func _on_medium_button_pressed():
 	#show_planets()
 	#tempLander()
 
-# will take the user to the trivia portion of the game on hard mode.
+# Will take the user to the trivia portion of the game on hard mode
 func _on_hard_button_pressed():
 	hide_difficulty_buttons()
 	difficulty = "Hard"
@@ -104,60 +103,68 @@ func _on_hard_button_pressed():
 	#show_planets()
 	#tempLander()
 
-# shows Start, Tutorial and Credits Buttons.
+# Shows Start, Tutorial and Credits Buttons.
 func show_stc_buttons():
 	$startButton.show()
 	$tutorialButton.show()
 	$creditsButton.show()
 
-# hides Start, Tutorial and Credits Buttons.
+# Hides Start, Tutorial and Credits Buttons.
 func hide_stc_buttons():
 	$startButton.hide()
 	$tutorialButton.hide()
 	$creditsButton.hide()
 
-# shows Easy, Medium and Hard Buttons.
+# Shows Easy, Medium and Hard Buttons.
 func show_diffculty_buttons():
 	$easyButton.show()
 	$mediumButton.show()
 	$hardButton.show()
 
-# hides Easy, Medium and Hard Buttons.
+# Hides Easy, Medium and Hard Buttons.
 func hide_difficulty_buttons():
 	$easyButton.hide()
 	$mediumButton.hide()
 	$hardButton.hide()
 
+# Shows planets
 func show_planets():
 	$planets.show()
 
+# Hides planets
 func hide_planets():
 	$planets.hide()
 
+# Gets the answer to the current trivia question
 func getTriviaAnswer(ans, bone):
 	trivAnswer = ans
 	bonus = bone
-
-# spawns the lander in the top middle of the screen
+	
+# Spawns the lander in the top middle of the screen
 func tempLander(difficulty):
 	pc = player.instantiate()
 	pc.position = Vector2(600,20)
 	#add_child(pc)
 
+# If the lander is landed
 func landed():
 	#display button
 	$to_next.show()
 	$winner_label.show()
 	WoL = "Win"
 	$Surface.Player_landed()
-	if difficulty == "Hard":
-		score +=3
-	elif difficulty == "Medium":
-		score += 2
-	else:
-		score +=1
+	
+	match difficulty:
+		"Easy":
+			score +=1
+		"Medium":
+			score +=2
+		"Hard":
+			score +=3
+	
 	update_score_display()
 	
+# If the lander crash landed	
 func crashLanded(type):
 	#display button
 	$to_next.show()
@@ -167,31 +174,131 @@ func crashLanded(type):
 		$crash_label.text = "Oh No! You crash landed on the planet!\nTry again?"
 	$crash_label.show()
 	WoL = "Lose"
-	if difficulty == "Hard":
-		score -=2
-	elif difficulty == "Medium":
-		score -= 1
+	
+	match difficulty:
+		"Easy":
+			pass
+		"Medium":
+			score -= 1
+		"Hard":
+			score -= 2
+	
 	update_score_display()
 
 func start(planet):
-	if bonus == true:
-		if (planet in trivAnswer) == true:
-			pass #correct
+	var correct
+	var correctAnswer = ""
+	
+	
+	
+	# Hide the trivia question when starting
+	$Trivia.hide()
+
+	# Determine whether or not the answer is correct
+	# Is it a bonus question?
+	if (bonus):
+		# Makes the correctAnswer variable equal the list
+		for answer in trivAnswer:
+			print (trivAnswer[answer])
+			correctAnswer = correctAnswer + trivAnswer[answer]
+			
+			# Adds a comma to all entries except the last one
+			if ((trivAnswer.size() - 1) > trivAnswer.find(answer)):
+				correctAnswer +=  ", or "
+		
+		# Check the answer
+		if (planet in trivAnswer):
+			# Correct answer
+			correct = true
+			# Change the label
+			$crash_label.text = "Congratulations!  You got the correct answer on a bonus question!"
 		else:
-			pass #incorrect
+			# Incorrect answer
+			correct = false
+			# Change the label
+			$crash_label.text = "Sorry, that answer was incorrect.  The correct answer was either " + correctAnswer + "."
+
+	# If it is not a bonus question
 	else:
 		if planet == trivAnswer:
-			pass #Correct!
+			# Correct answer
+			correct = true
+			# Change the label
+			$crash_label.text = "Congratulations!  You got the correct answer!"
 		else:
-			pass #Incorrect
-	$Trivia.hide()
+			# Incorrect answer
+			correct = false
+			# Change the label
+			$crash_label.text = "Sorry, that answer was incorrect.  The correct answer was " + trivAnswer + "."
+	
+	# Calculate points based on correct or incorrect answers
+	# Is it a bonus question?
+	if (bonus):
+		# Correct answer
+		if (correct):
+			# Give points based on the difficulty
+			match difficulty:
+				"Easy":
+					score += 2
+				"Medium":
+					score += 3
+				"Hard":
+					score += 5
+		# Incorrect answer
+		else:
+			# No penalty for bonus questions
+			pass		
+	# If it is not a bonus question
+	else:
+		# Correct answer
+		if (correct):
+			# Give points based on the difficulty
+			match difficulty:
+				"Easy":
+					score += 1
+				"Medium":
+					score += 2
+				"Hard":
+					score += 3
+		# Incorrect answer
+		else:
+			# Lose points based on the difficulty
+			match difficulty:
+				"Easy":
+					# No penalty on easy mode
+					pass
+				"Medium":
+					score -= 1
+				"Hard":
+					score -= 2		
+	
+	# Update the scores calculated previously
+	update_score_display()
+	
+	# Button to move to the next thing 
+	$StartLander.show()
+	
+	# Show the label
+	$crash_label.show()
+	$crash_label.position.y -= 50
+	
+func playLander():
+	$StartLander.hide()
+	
+	$crash_label.hide()
+	$crash_label.position.y += 50
+	
+	# Make the ground of the planet and show it
 	$Surface.create_ground(difficulty)
 	$Surface.show()
+	
+	# Hide the planets
 	$planets.hide()
+	
 	remove_child(ms)
 	ms = null
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
+	
 #func difficulty():
 #	$easy
 #	$med
@@ -201,13 +308,18 @@ func to_trivia():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	ms = mouse.instantiate()
 	add_child(ms)
-	if difficulty == "Medium":
-		ms.setMedium()
-	elif difficulty == "Hard":
-		ms.setMedium()
+	
+	match difficulty:
+		"Easy":
+			# Default difficulty 
+			pass
+		"Medium":
+			ms.setMedium()
+		"Hard":
+			ms.setMedium()
+
 	$Trivia.getTriviaQuestion()
 	show_planets()
-
 
 func _on_to_next_pressed():
 	$to_next.hide()
@@ -216,3 +328,9 @@ func _on_to_next_pressed():
 	$Surface.clear_level(WoL)
 	$Trivia.show()
 	to_trivia()
+	
+#func _on_to_planets_pressed():
+	# Hide the button itself
+#	$to_planets.hide()
+	
+	

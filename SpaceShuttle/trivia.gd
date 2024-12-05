@@ -4,25 +4,33 @@ var rng = RandomNumberGenerator.new()
 var file_path = "res://Trivia.json"
 var prevBQ = []
 var prevQ = []
+var prevQemptied
+var prevBQemptied
 var difficulty
 var question
 var answer
 var triv
 
-# Called when the node enters the scene tree for the first time.
+# Called when the node enters the scene tree for the first time
 func _ready() -> void:
 	read_json()
 	#test_json()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Called every frame. 'delta' is the elapsed time since the previous frame
 func _process(delta: float) -> void:
 	# Empties the list of questions when it reaches 60
 	if prevQ.size() == 60:
+		# Using a temp variable to set the first slot of the question list to the last question, before emptying it
+		prevQemptied = prevQ[60]
 		emptyPrevQ()
-	
+		prevBQ.append(prevQemptied)
+			
 	# Empties the list of bonus questions when it reaches 15	
 	if prevBQ.size() == 15:
+		# Using a temp variable to set the first slot of the question list to the last question, before emptying it
+		prevBQemptied = prevBQ[15]
 		emptyPrevBQ()
+		prevBQ.append(prevBQemptied)
 
 # Reads the file specified (Trivia)
 func read_json():
@@ -53,12 +61,13 @@ func getTriviaQuestion():
 	else:
 		# Parsing info for establishing questions
 		key = "T"
-		if difficulty == "Easy":
-			key += "E"
-		elif difficulty == "Medium":
-			key += "M"
-		elif difficulty == "Hard":
-			key += "H"
+		match difficulty: 
+			"Easy":
+				key += "E"
+			"Medium":
+				key += "M"
+			"Hard":
+				key += "H"
 		key += "Q"
 		qNum = rng.randi_range(1,60)
 		
