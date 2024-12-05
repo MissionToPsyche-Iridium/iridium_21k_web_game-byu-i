@@ -152,6 +152,61 @@ text = "This work was created in partial fulfillment of Brigham Young University
 horizontal_alignment = 1
 autowrap_mode = 2
 
+[node name="teamLead" type="Label" parent="disclaimer"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = -395.0
+offset_right = 482.0
+offset_bottom = -322.0
+theme_override_font_sizes/font_size = 25
+text = "TEAM LEAD:
+COLIN BOWSER"
+horizontal_alignment = 1
+
+[node name="seniorSD" type="Label" parent="disclaimer"]
+layout_mode = 0
+offset_left = 428.0
+offset_top = -187.0
+offset_right = 727.0
+offset_bottom = -114.0
+theme_override_font_sizes/font_size = 25
+text = "SOFTWARE DEVELOPER:
+JOSEPH LIPTON"
+horizontal_alignment = 1
+
+[node name="sd1" type="Label" parent="disclaimer"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = -270.0
+offset_right = 380.0
+offset_bottom = -197.0
+theme_override_font_sizes/font_size = 25
+text = "SOFTWARE DEVELOPER:
+JOSEPH GREGORY"
+horizontal_alignment = 1
+
+[node name="sd2" type="Label" parent="disclaimer"]
+layout_mode = 0
+offset_left = 737.0
+offset_top = -275.0
+offset_right = 1036.0
+offset_bottom = -202.0
+theme_override_font_sizes/font_size = 25
+text = "SOFTWARE DEVELOPER:
+JASON RAO"
+horizontal_alignment = 1
+
+[node name="sd3" type="Label" parent="disclaimer"]
+layout_mode = 0
+offset_left = 605.0
+offset_top = -392.0
+offset_right = 942.0
+offset_bottom = -319.0
+theme_override_font_sizes/font_size = 25
+text = "SOFTWARE DEVELOPER:
+GEORGE WIELAND"
+horizontal_alignment = 1
+
 [node name="ScoreLabel" type="Label" parent="."]
 visible = false
 offset_left = 1074.0
@@ -160,8 +215,8 @@ offset_right = 1135.0
 offset_bottom = 25.0
 text = "Score: 0"
 
-[connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]
+[connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="tutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="creditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MusicButton" to="." method="_on_music_button_pressed"]
