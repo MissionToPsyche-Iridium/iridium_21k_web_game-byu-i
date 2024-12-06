@@ -9,6 +9,7 @@ var thrusterPower = .1
 var accelerationLeft = .05 
 var accelerationRight = .05 
 var win = false
+var canBeHit = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -67,14 +68,18 @@ func landed_rocket():
 	##ShipVelocity.y = 0
 	#pass
 
-func _on_area_2d_area_entered(area: Area2D):
+func _on_easy_area_2d_area_entered(area: Area2D):
 	if area.get_name() == "lander_box":
+		canBeHit = false
 		landed_rocket()
 		print("landed")
 	elif area.get_name() == "planet_area":
 		pass
 	elif area.get_name() == "Meteorite_Area":
-		destroy_rocket("hitMeteor")
+		if canBeHit == true:
+			destroy_rocket("hitMeteor")
+		else:
+			pass
 	else:
 		destroy_rocket("crashLanded")
 	pass # Replace with function body.

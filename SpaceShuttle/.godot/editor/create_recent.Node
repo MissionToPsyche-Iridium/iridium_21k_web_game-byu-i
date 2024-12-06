@@ -1,5 +1,5 @@
-Button
 Label
+Button
 ColorRect
 CollisionShape2D
 Area2D
