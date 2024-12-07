@@ -151,6 +151,7 @@ offset_bottom = 445.0
 text = "MAIN MENU"
 
 [node name="disclaimer" type="Label" parent="."]
+visible = false
 offset_left = 20.0
 offset_top = 470.0
 offset_right = 1130.0
@@ -234,8 +235,8 @@ text = "Begin landing protocol."
 [node name="starset" type="Node2D" parent="."]
 z_index = -1
 
-[connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]
+[connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="tutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="creditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MusicButton" to="." method="_on_music_button_pressed"]
