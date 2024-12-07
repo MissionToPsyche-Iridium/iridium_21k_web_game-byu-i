@@ -172,6 +172,10 @@ func crashLanded(type):
 		$crash_label.text = "Oh No! You got hit by a meteor!\nTry again?"
 	elif type == "crashLanded":
 		$crash_label.text = "Oh No! You crash landed on the planet!\nTry again?"
+	elif type == "landedSideways":
+		$crash_label.text = "Oh No! Your ship crashed because it was too tilted!\nTry again?"
+	elif type == "hardHit":
+		$crash_label.text = "Oh No! Your ship hit the landing pad too hard!\nTry again?"
 	$crash_label.show()
 	WoL = "Lose"
 	

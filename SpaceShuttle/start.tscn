@@ -223,8 +223,8 @@ offset_right = 669.5
 offset_bottom = 331.0
 text = "Begin landing protocol."
 
-[connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]
+[connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="tutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="creditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MusicButton" to="." method="_on_music_button_pressed"]

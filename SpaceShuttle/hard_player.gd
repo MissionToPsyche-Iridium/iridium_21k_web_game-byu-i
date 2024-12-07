@@ -1,12 +1,12 @@
 extends Node2D
 var difficulty
 var ShipVelocity = Vector2()
-var MaxSpeedYPositive = 2
+var MaxSpeedYPositive = 1.5
 var MaxSpeedYNegative = -1
 var MaxSpeedXPositive = 2
 var MaxSpeedXNegative = -2
-var gravity = .03
-var thrusterPower = .2
+var gravity = .01
+var thrusterPower = .1
 var accelerationLeft = .05 
 var accelerationRight = .05 
 var win = false
@@ -64,8 +64,18 @@ func _process(delta: float) -> void:
 			ShipVelocity.x = 0
 		if ShipVelocity.y < 0 and position.y <= 20:
 			ShipVelocity.y = 0
+			
+		
+			
+			
 		position.x += ShipVelocity.x 
 		position.y += ShipVelocity.y
+		
+		
+		if ShipVelocity.x > 0:
+			ShipVelocity.x -= .002
+		if ShipVelocity.x < 0:
+			ShipVelocity.x += .002
 	elif position.y >= 650:
 			destroy_rocket("crashLanded")
 	elif win == true:
@@ -91,8 +101,14 @@ func landed_rocket():
 func _on_area_2d_area_entered(area: Area2D):
 	if area.get_name() == "lander_box":
 		canBeHit = false
-		landed_rocket()
-		print("landed")
+		if rotation_degrees > 60 or rotation_degrees < -60:
+			destroy_rocket("landedSideways")
+		elif ShipVelocity.y > 1.3:
+			destroy_rocket("hardHit")
+		else:
+			rotation_degrees = 0
+			landed_rocket()
+			print("landed")
 	elif area.get_name() == "planet_area":
 		pass
 	elif area.get_name() == "Meteorite_Area":
