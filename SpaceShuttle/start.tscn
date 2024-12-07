@@ -12,6 +12,7 @@ specular_color = Color(0, 0, 0, 1)
 script = ExtResource("1_1ny8t")
 
 [node name="startButton" type="Button" parent="."]
+visible = false
 top_level = true
 offset_left = 500.0
 offset_top = 190.0
@@ -22,6 +23,7 @@ grow_vertical = 2
 text = "START"
 
 [node name="tutorialButton" type="Button" parent="."]
+visible = false
 top_level = true
 offset_left = 500.0
 offset_top = 280.0
@@ -30,6 +32,7 @@ offset_bottom = 355.0
 text = "TUTORIAL"
 
 [node name="creditsButton" type="Button" parent="."]
+visible = false
 top_level = true
 offset_left = 500.0
 offset_top = 370.0
@@ -38,6 +41,7 @@ offset_bottom = 445.0
 text = "CREDITS"
 
 [node name="MusicButton" type="Button" parent="."]
+visible = false
 top_level = true
 offset_left = 10.0
 offset_top = 10.0
@@ -45,6 +49,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="AudioButton" type="Button" parent="."]
+visible = false
 top_level = true
 offset_left = 50.0
 offset_top = 10.0
@@ -52,6 +57,7 @@ offset_right = 80.0
 offset_bottom = 40.0
 
 [node name="easyButton" type="Button" parent="."]
+visible = false
 top_level = true
 offset_left = 335.0
 offset_top = 280.0
@@ -60,6 +66,7 @@ offset_bottom = 355.0
 text = "EASY"
 
 [node name="mediumButton" type="Button" parent="."]
+visible = false
 top_level = true
 offset_left = 500.0
 offset_top = 280.0
@@ -68,6 +75,7 @@ offset_bottom = 355.0
 text = "MEDIUM"
 
 [node name="hardButton" type="Button" parent="."]
+visible = false
 top_level = true
 offset_left = 665.0
 offset_top = 280.0
@@ -136,15 +144,13 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="returnButton" type="Button" parent="."]
-visible = false
-offset_left = 500.0
+offset_left = 501.0
 offset_top = 370.0
-offset_right = 650.0
+offset_right = 651.0
 offset_bottom = 445.0
 text = "MAIN MENU"
 
 [node name="disclaimer" type="Label" parent="."]
-visible = false
 offset_left = 20.0
 offset_top = 470.0
 offset_right = 1130.0
@@ -160,19 +166,20 @@ offset_top = -395.0
 offset_right = 482.0
 offset_bottom = -322.0
 theme_override_font_sizes/font_size = 25
-text = "TEAM LEAD:
-COLIN BOWSER"
+text = "Team Lead:
+Colin Bowser"
 horizontal_alignment = 1
 
 [node name="seniorSD" type="Label" parent="disclaimer"]
 layout_mode = 0
-offset_left = 428.0
-offset_top = -187.0
-offset_right = 727.0
-offset_bottom = -114.0
+offset_left = 450.0
+offset_top = -230.0
+offset_right = 701.0
+offset_bottom = -119.0
 theme_override_font_sizes/font_size = 25
-text = "SOFTWARE DEVELOPER:
-JOSEPH LIPTON"
+text = "Senior Software Dev
+& Artist:
+Joseph Linton"
 horizontal_alignment = 1
 
 [node name="sd1" type="Label" parent="disclaimer"]
@@ -182,8 +189,8 @@ offset_top = -270.0
 offset_right = 380.0
 offset_bottom = -197.0
 theme_override_font_sizes/font_size = 25
-text = "SOFTWARE DEVELOPER:
-JOSEPH GREGORY"
+text = "Lander Dev:
+Joseph Gregory"
 horizontal_alignment = 1
 
 [node name="sd2" type="Label" parent="disclaimer"]
@@ -193,8 +200,8 @@ offset_top = -275.0
 offset_right = 1036.0
 offset_bottom = -202.0
 theme_override_font_sizes/font_size = 25
-text = "SOFTWARE DEVELOPER:
-JASON RAO"
+text = "Meteor & Score Dev:
+Jason Rao"
 horizontal_alignment = 1
 
 [node name="sd3" type="Label" parent="disclaimer"]
@@ -204,8 +211,8 @@ offset_top = -392.0
 offset_right = 942.0
 offset_bottom = -319.0
 theme_override_font_sizes/font_size = 25
-text = "SOFTWARE DEVELOPER:
-GEORGE WIELAND"
+text = "Trivia Programmer:
+George Wieland"
 horizontal_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="."]
