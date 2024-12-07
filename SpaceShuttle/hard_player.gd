@@ -5,12 +5,13 @@ var MaxSpeedYPositive = 1.5
 var MaxSpeedYNegative = -1
 var MaxSpeedXPositive = 2
 var MaxSpeedXNegative = -2
-var gravity = .01
-var thrusterPower = .1
+var gravity = .005
+var thrusterPower = .2
 var accelerationLeft = .05 
 var accelerationRight = .05 
 var win = false
 var canBeHit = true
+var decendingFactor = .5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,6 +23,10 @@ func _ready():
 func _process(delta: float) -> void:
 	if win == false:
 		ShipVelocity.y += gravity
+		#decendingFactor = 1
+		#if ShipVelocity.y > 0:
+			#decendingFactor = .3
+		
 		print(rotation_degrees)
 		if Input.is_action_pressed("A") or Input.is_action_pressed("ui_left"):
 			#turn lander left if its not more than 90% to the left
@@ -40,16 +45,16 @@ func _process(delta: float) -> void:
 		if Input.is_action_pressed("W") or Input.is_action_pressed("ui_up"):
 				#if rocket is straight up
 				if rotation_degrees == 0:
-					ShipVelocity.y -= thrusterPower
+					ShipVelocity.y -= thrusterPower * decendingFactor
 				#if rocket is right leaning
 				if rotation_degrees > 0:
 					#acelerate it upward proportinal to how upward its facing
-					ShipVelocity.y -= thrusterPower * (.9 - (rotation_degrees*.01))
+					ShipVelocity.y -= thrusterPower * (.9 - (rotation_degrees*.01)) * decendingFactor
 					#acelerate it to the right proportinal to how right its facing
-					ShipVelocity.x += thrusterPower * (rotation_degrees*.01)
+					ShipVelocity.x += thrusterPower * (rotation_degrees*.01) * .3
 				if rotation_degrees < 0:
-					ShipVelocity.y -= thrusterPower * (.9 - (rotation_degrees*.01))
-					ShipVelocity.x += thrusterPower * (rotation_degrees*.01)
+					ShipVelocity.y -= thrusterPower * (.9 - (rotation_degrees*.01)) * decendingFactor
+					ShipVelocity.x += thrusterPower * (rotation_degrees*.01) * .3
 		if ShipVelocity.y > MaxSpeedYPositive:
 			ShipVelocity.y = MaxSpeedYPositive
 		if ShipVelocity.y < MaxSpeedYNegative:
@@ -103,7 +108,7 @@ func _on_area_2d_area_entered(area: Area2D):
 		canBeHit = false
 		if rotation_degrees > 60 or rotation_degrees < -60:
 			destroy_rocket("landedSideways")
-		elif ShipVelocity.y > 1.3:
+		elif ShipVelocity.y > 1.49:
 			destroy_rocket("hardHit")
 		else:
 			rotation_degrees = 0
