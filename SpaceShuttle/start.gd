@@ -1,31 +1,41 @@
 extends Node2D
-var player = preload("res://player.tscn")
+
 var HPlayer = preload("res://hard_player.tscn")
+var player = preload("res://player.tscn")
 var mouse = preload("res://mouse.tscn")
-var pc
-var ms
-var rng = RandomNumberGenerator
+var star = preload("res://star.tscn")
+var rng = RandomNumberGenerator.new()
 var trivAnswer
 var difficulty
-var WoL
-var bonus
+var stars = []
 var score = 0
+var bonus
+var WoL
+var pc
+var ms
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide_difficulty_buttons()
+	create_stars()
 	Signalbus.answer.connect(getTriviaAnswer)
 	Signalbus.landed_complete.connect(landed)
 	Signalbus.landed_failed.connect(crashLanded)
 	Signalbus.start.connect(start)
+
+func _process(delta: float):
+	for star in stars:
+		star.position.x -= .5
+		if star.position.x == -10:
+			star.position.x = 1162
 
 func update_score_display():
 	$ScoreLabel.text = "Score: %d" % score
 	#print(score)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+#func _process(delta: float) -> void:
+	#pass
 
 func Play():
 	pass
@@ -130,6 +140,7 @@ func hide_difficulty_buttons():
 # Shows planets
 func show_planets():
 	$planets.show()
+	Signalbus.emit_signal("activate")
 
 # Hides planets
 func hide_planets():
@@ -138,10 +149,11 @@ func hide_planets():
 # Gets the answer to the current trivia question
 func getTriviaAnswer(ans, bone):
 	trivAnswer = ans
+	print(trivAnswer)
 	bonus = bone
 	
 # Spawns the lander in the top middle of the screen
-func tempLander(difficulty):
+func tempLander(diff):
 	pc = player.instantiate()
 	pc.position = Vector2(600,20)
 	#add_child(pc)
@@ -190,6 +202,8 @@ func crashLanded(type):
 	update_score_display()
 
 func start(planet):
+	print(planet)
+	Signalbus.emit_signal("deactivate")
 	var correct
 	var correctAnswer = ""
 	
@@ -203,8 +217,8 @@ func start(planet):
 	if (bonus):
 		# Makes the correctAnswer variable equal the list
 		for answer in trivAnswer:
-			print (trivAnswer[answer])
-			correctAnswer = correctAnswer + trivAnswer[answer]
+			#print (answer)
+			correctAnswer = correctAnswer + answer
 			
 			# Adds a comma to all entries except the last one
 			if ((trivAnswer.size() - 1) > trivAnswer.find(answer)):
@@ -221,7 +235,44 @@ func start(planet):
 			correct = false
 			# Change the label
 			$crash_label.text = "Sorry, that answer was incorrect.  The correct answer was either " + correctAnswer + "."
-
+			$crash_label.text += "\nAfter a noticing you were at the wrong planet, you turn around and go to the nearest correct planet."
+			
+			#set trivAnswer to the nearest correct answer
+			#Variable set up
+			var planetOrder = ["Mercury", "Venus", "Earth", "Mars", "Psyche", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto"]
+			var pd2s = [.39, .72, 1, 1.52, 2.90, 5.20, 9.54, 19.22, 30.06, 39.50]
+			var iPlanetInd = planetOrder.find(planet)
+			var cPlanetInd = []
+			var PDs = [] #P.Ds = Planetary Distances
+			var iPD = pd2s[iPlanetInd]
+			var sPD = 100 # s.P.D = smallest Planetary Distance
+			
+			#The process starts with finding each of the correct planet's index number in planetOrder
+			for p in trivAnswer:
+				cPlanetInd.append(planetOrder.find(p))
+			
+			#Next we find the related number in pd2s. Find the distance between the planet clicked and
+			#the correct planets. Then put it into P.Ds
+			for p in cPlanetInd:
+				var cPD = pd2s[p]
+				var distance = iPD - cPD
+				if distance < 0:
+					distance *= -1
+				PDs.append(distance)
+			
+			#Now that we have the distances, we look for the smallest Planetary Distance (s.P.D.).
+			for pd in PDs:
+				if pd < sPD:
+					sPD = pd
+			
+			#finds the s.P.D's index number and it should be the same index as the planet closest to 
+			#the wrong planet that was clicked
+			var fInd = PDs.find(sPD)
+			var nCP = trivAnswer[fInd] #nearest Correct Planet
+			
+			#wrap it up by making trivAnswer equal just the n.C.P
+			trivAnswer = nCP
+			
 	# If it is not a bonus question
 	else:
 		if planet == trivAnswer:
@@ -233,7 +284,9 @@ func start(planet):
 			# Incorrect answer
 			correct = false
 			# Change the label
+			$crash_label.position.y -= 50
 			$crash_label.text = "Sorry, that answer was incorrect.  The correct answer was " + trivAnswer + "."
+			$crash_label.text += "\nAfter a noticing you were at the wrong planet, you turn around and reach " + trivAnswer + "."
 	
 	# Calculate points based on correct or incorrect answers
 	# Is it a bonus question?
@@ -290,10 +343,10 @@ func playLander():
 	$StartLander.hide()
 	
 	$crash_label.hide()
-	$crash_label.position.y += 50
+	$crash_label.position.y = 237
 	
 	# Make the ground of the planet and show it
-	$Surface.create_ground(difficulty)
+	$Surface.create_ground(difficulty, trivAnswer)
 	$Surface.show()
 	
 	# Hide the planets
@@ -323,6 +376,7 @@ func to_trivia():
 			ms.setMedium()
 
 	$Trivia.getTriviaQuestion()
+	$Trivia.show()
 	show_planets()
 
 func _on_to_next_pressed():
@@ -332,7 +386,34 @@ func _on_to_next_pressed():
 	$Surface.clear_level(WoL)
 	$Trivia.show()
 	to_trivia()
-	
+
+func create_stars():
+	var x
+	var y
+	var z = 100
+	#var minX = 376
+	#var minY = 50
+	#var maxX = 776
+	#var maxY = 150
+	while z != 0:
+		z -= 1
+		var celeb = star.instantiate()
+		x = rng.randi_range(-10,1162)
+		y = rng.randi_range(50,600)
+		#while (x > minX) and (x < maxX) and (y > minY) and (y < maxY):
+			#x = rng.randi_range(50,1100)
+			#y = rng.randi_range(50,600)
+		celeb.position = Vector2(x,y)
+		print("(" + str(x) + ", " + str(y) + ")")
+		$starset.add_child(celeb)
+		stars.append(celeb)
+	print("done")
+
+func destroy_stars():
+	for i in stars:
+		$starset.remove_child(i)
+		i.queue_free()
+
 #func _on_to_planets_pressed():
 	# Hide the button itself
 #	$to_planets.hide()

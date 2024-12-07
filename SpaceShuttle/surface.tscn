@@ -7,4 +7,10 @@ script = ExtResource("1_y0wdx")
 
 [node name="MeteoriteTimer" type="Timer" parent="."]
 
+[node name="LandPad" type="Node2D" parent="."]
+z_index = 1
+
+[node name="Meteors" type="Node2D" parent="."]
+z_index = -1
+
 [connection signal="timeout" from="MeteoriteTimer" to="." method="_on_meteorite_timer_timeout"]

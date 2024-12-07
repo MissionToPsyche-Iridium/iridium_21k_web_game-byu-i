@@ -1,27 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpwd23cjr7nmh"]
+[gd_scene load_steps=4 format=3 uid="uid://cpwd23cjr7nmh"]
 
 [ext_resource type="Script" path="res://Meteorite.gd" id="1_urxfx"]
+[ext_resource type="Texture2D" uid="uid://dyymfrp5qgbxt" path="res://Art/Meteor.png" id="2_cthol"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1v5d"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_kw1dc"]
 
 [node name="Meteorite" type="Node2D"]
 script = ExtResource("1_urxfx")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Meteorite_Area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Meteorite_Area"]
 scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_o1v5d")
+shape = SubResource("CircleShape2D_kw1dc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_cthol")

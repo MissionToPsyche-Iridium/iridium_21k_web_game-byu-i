@@ -4,8 +4,9 @@ var rng = RandomNumberGenerator.new()
 var file_path = "res://Trivia.json"
 var prevBQ = []
 var prevQ = []
-var prevQemptied
+var qCount = 0
 var prevBQemptied
+var prevQemptied
 var difficulty
 var question
 var answer
@@ -46,7 +47,8 @@ func getTriviaQuestion():
 	var qNum
 	var bonus = false
 	# Checks to do a bonus question every tenth question
-	if (prevQ.size() != 0) && (prevQ.size() % 10) == 0:
+	if qCount == 10:
+		qCount = 0
 		key = "TBQ"
 		bonus = true
 		qNum = rng.randi_range(1,15)
@@ -59,6 +61,7 @@ func getTriviaQuestion():
 		prevBQ.append(qNum)
 	
 	else:
+		qCount += 1
 		# Parsing info for establishing questions
 		key = "T"
 		match difficulty: 
@@ -89,7 +92,7 @@ func getTriviaQuestion():
 	question = triv[key]
 	key[2] = "A"
 	answer = triv[key]
-	$Label.text = question
+	$TextureRect/Label.text = question
 	Signalbus.emit_signal("answer",answer, bonus)
 
 # Sets the list of questions to an empty list

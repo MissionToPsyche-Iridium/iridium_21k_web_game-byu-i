@@ -9,11 +9,11 @@ script = ExtResource("1_3iraa")
 [node name="Start" parent="." instance=ExtResource("3_lf2pl")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-offset_left = 45.0
-offset_top = 134.0
-offset_right = 85.0
-offset_bottom = 174.0
+z_index = -5
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0

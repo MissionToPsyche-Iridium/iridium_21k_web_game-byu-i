@@ -3,15 +3,18 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rvs2k"]
 
 [node name="Ground" type="Node2D"]
+scale = Vector2(1, 0.01)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 100.0
-offset_bottom = 20.0
+offset_bottom = 2.0
+scale = Vector2(1, 100)
 color = Color(0.412152, 0.412152, 0.412152, 1)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Ground" type="Area2D" parent="."]
+scale = Vector2(1, 10)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2(50, 10)
 scale = Vector2(5, 1)
 shape = SubResource("RectangleShape2D_rvs2k")

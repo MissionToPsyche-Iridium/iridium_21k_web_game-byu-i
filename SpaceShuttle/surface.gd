@@ -1,13 +1,16 @@
 extends Node2D
+var Hplayer = preload("res://hard_player.tscn")
 var test = preload("res://placement_test.tscn")
 var meteor = preload("res://Meteorite.tscn")
+var ground2 = preload("res://ground_2.tscn")
 var pad = preload("res://landing_pad.tscn")
-var player = preload("res://player.tscn")
-var Hplayer = preload("res://hard_player.tscn")
 var ground = preload("res://ground.tscn")
+var player = preload("res://player.tscn")
 var rng = RandomNumberGenerator.new()
 var meteorites = []
 var testers = []
+var planet = []
+var grC = []
 var lp
 var p
 
@@ -19,16 +22,21 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func create_ground(diff):
+func create_ground(diff, pl):
 	#var g = ground.instantiate()
 	#rng between 500-600, create 13 vectors (x,y)
 	#g.position #= 1st vector
 	setLandingPad(diff)
-	var z = 12
-	var xb = 0
+	var z = 13
+	var xb = -100
+	var points = []
+	var lpPos = Vector2(lp.position.x-38,lp.position.y)
+	var lpEndPos = Vector2(lp.position.x+38,lp.position.y)
+	var blp = Vector2(0,0)
+	var alp = Vector2(10000,10000)
 	while z > 0:
 		var x = rng.randi_range(xb,xb+100)
-		var y
+		var y #= rng.randi_range(500,600)
 		
 		match diff:
 			"Easy":
@@ -38,13 +46,86 @@ func create_ground(diff):
 			"Hard":
 				y = rng.randi_range(300,600)
 				
-		var tester = test.instantiate()
-		tester.position = Vector2(x,y)
-		print(tester.position)
-		add_child(tester)
-		testers.append(tester)
+		#var tester = test.instantiate()
+		#tester.position = Vector2(x,y)
+		#print(tester.position)
+		#add_child(tester)
+		#testers.append(tester)
+		if x > lpPos.x and x < lpEndPos.x:
+			x = lpEndPos.x
+			y = lpEndPos.y
+		if x == lpPos.x:
+			x = lpPos.x
+			y = lpPos.y
+		points.append(Vector2(x,y))
 		xb += 100
 		z -= 1
+		if x < lpPos.x and x > blp.x:
+			blp = Vector2(x,y)
+		if x > lpEndPos.x and x < alp.x:
+			alp = Vector2(x,y)
+	#-50, 50, 150, 250, 350, 450, 550, 650, 750,
+	if (lpPos in points) == false:
+		#print(points)
+		var i = points.find(blp)
+		points.insert(i+1,lpPos)
+		#print(points)
+	if (lpEndPos in points) == false:
+		#print(points)
+		var i = points.find(alp)
+		points.insert(i,lpEndPos)
+		#print(points)
+	var c = 1
+	var pAng
+	for pos in points:
+		if pos != lpPos:
+			var g = ground.instantiate()
+			g.position = pos
+			add_child(g)
+			planet.append(g)
+			var n = points[c]
+			var gPos = g.position
+			var ang = gPos.angle_to_point(n)
+			g.rotation = ang
+			var distance = gPos.distance_to(n)
+			g.scale.x = distance/100
+			#if rad_to_deg(ang) <= -50 or rad_to_deg(ang) >= 50:
+				#g.scale.y = 10
+			#find a way to remember angles and figure out ones that have a negative difference. 
+			#then make a new ground that is rotated to (angleA + angleB)/2
+			#if pAng != null:
+				#var dAng = pAng - ang
+				#if dAng > 0: 
+					#var newG = ground2.instantiate()
+					#newG.position = pos
+					#add_child(newG)
+					#planet.append(newG)
+					#newG.rotation = (ang + pAng)/2
+			pAng = ang
+		#else:
+			#var g = ground2.instantiate()
+			#g.position = lp.position
+			#add_child(g)
+			#planet.append(g)
+			#var n = points[c]
+			#var gPos = g.position
+			#var ang = gPos.angle_to_point(n)
+			#var dAng = pAng - ang
+			#if dAng > 0: 
+				#var newG = ground2.instantiate()
+				#newG.position = pos
+				#add_child(newG)
+				#planet.append(newG)
+				#newG.rotation = (ang + pAng)/2
+			#pAng = 0
+		if c != points.size() - 1:
+			c += 1
+	
+	for i in range(0,1152):
+		var gC = ground2.instantiate()
+		gC.position = Vector2(i,0)
+		grC.append(gC)
+	
 	$MeteoriteTimer.start()	
 	
 	match diff:
@@ -61,7 +142,7 @@ func create_ground(diff):
 
 func setLandingPad(diff):
 	var x = rng.randi_range(100,1052)
-	var y
+	var y #= rng.randi_range(500,600)
 	
 	match diff:
 		"Easy":
@@ -73,7 +154,11 @@ func setLandingPad(diff):
 			
 	lp = pad.instantiate()
 	lp.position = Vector2(x,y)
-	add_child(lp)
+	$LandPad.add_child(lp)
+	
+	#var gr = ground2.instantiate()
+	#gr.position = Vector2(x,y)
+	#planet.append(gr)
 
 func Mercury():
 	pass
@@ -90,7 +175,7 @@ func Earth():
 func _on_meteorite_timer_timeout():
 	#print("Spawning meteorite1") # Debug
 	var meteorite = meteor.instantiate()
-	add_child(meteorite)
+	$Meteors.add_child(meteorite)
 	meteorites.append(meteorite)
 
 func remove_meteorite(IID):
@@ -109,8 +194,11 @@ func clear_level(WoL):
 		i.queue_free()
 	for i in testers:
 		i.queue_free()
+	for i in planet:
+		i.queue_free()
 	meteorites = []
 	testers = []
+	planet = []
 	lp.queue_free()
 	if WoL == "Win":
 		p.queue_free()

@@ -8,3 +8,6 @@ signal landed_failed(type)
 
 signal start(planet)
 signal remove_meteor(mName)
+
+signal activate()
+signal deactivate()
