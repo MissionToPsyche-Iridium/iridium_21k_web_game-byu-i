@@ -78,53 +78,72 @@ func create_ground(diff, pl):
 	var c = 1
 	var pAng
 	for pos in points:
-		if pos != lpPos:
-			var g = ground.instantiate()
-			g.position = pos
-			add_child(g)
-			planet.append(g)
-			var n = points[c]
-			var gPos = g.position
-			var ang = gPos.angle_to_point(n)
-			g.rotation = ang
-			var distance = gPos.distance_to(n)
-			g.scale.x = distance/100
-			#if rad_to_deg(ang) <= -50 or rad_to_deg(ang) >= 50:
-				#g.scale.y = 10
-			#find a way to remember angles and figure out ones that have a negative difference. 
-			#then make a new ground that is rotated to (angleA + angleB)/2
-			#if pAng != null:
-				#var dAng = pAng - ang
-				#if dAng > 0: 
-					#var newG = ground2.instantiate()
-					#newG.position = pos
-					#add_child(newG)
-					#planet.append(newG)
-					#newG.rotation = (ang + pAng)/2
-			pAng = ang
-		#else:
-			#var g = ground2.instantiate()
-			#g.position = lp.position
-			#add_child(g)
-			#planet.append(g)
-			#var n = points[c]
-			#var gPos = g.position
-			#var ang = gPos.angle_to_point(n)
-			#var dAng = pAng - ang
-			#if dAng > 0: 
-				#var newG = ground2.instantiate()
-				#newG.position = pos
-				#add_child(newG)
-				#planet.append(newG)
-				#newG.rotation = (ang + pAng)/2
-			#pAng = 0
+		#if pos != lpPos:
+		var g = ground.instantiate()
+		g.position = pos
+		add_child(g)
+		planet.append(g)
+		var n = points[c]
+		var gPos = g.position
+		var ang = gPos.angle_to_point(n)
+		g.rotation = ang
+		var distance = gPos.distance_to(n)
+		g.scale.x = distance/100
+		pAng = ang
 		if c != points.size() - 1:
 			c += 1
 	
-	for i in range(0,1152):
-		var gC = ground2.instantiate()
-		gC.position = Vector2(i,0)
-		grC.append(gC)
+	var Xs = []
+	for i in planet:
+		Xs.append(i.position.x)
+	
+	var ang
+	var stp
+	var enp
+	
+	var x1 = Xs[0]
+	var x2 = Xs[12]
+	
+	# testing code
+	#var test = []
+	#for p in planet:
+		#test.append(p.position.x)
+	#print(Xs)
+	#print(test)
+	var adj
+	var opp
+	var hyp
+	for p in planet:
+		var np 
+		if planet.find(p)+1 != planet.size():
+			np = planet[planet.find(p)+1]
+		else:
+			np = p
+		ang = p.rotation
+		stp = p.position
+		enp = np.position
+		var sx = stp.x
+		var ex = enp.x
+		var r = ex - sx
+		var memory
+		var test = []
+		var test2 = []
+		for i in range(0,r):
+			if ang != 0:
+				adj = i
+				hyp = adj / cos(ang)
+				opp = sin(ang) * hyp
+			else:
+				opp = 0
+			var y = stp.y + opp
+			var gC = ground2.instantiate()
+			test.append(Vector2(i+sx,y))
+			test2.append(opp)
+			gC.position = Vector2(i+sx,y)
+			add_child(gC)
+			grC.append(gC)
+			#if memory == null and y != p.y:
+				#pass
 	
 	$MeteoriteTimer.start()	
 	
@@ -196,9 +215,12 @@ func clear_level(WoL):
 		i.queue_free()
 	for i in planet:
 		i.queue_free()
+	for i in grC:
+		i.queue_free()
 	meteorites = []
 	testers = []
 	planet = []
+	grC = []
 	lp.queue_free()
 	if WoL == "Win":
 		p.queue_free()

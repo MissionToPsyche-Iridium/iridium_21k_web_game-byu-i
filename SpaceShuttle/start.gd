@@ -149,7 +149,7 @@ func hide_planets():
 # Gets the answer to the current trivia question
 func getTriviaAnswer(ans, bone):
 	trivAnswer = ans
-	print(trivAnswer)
+	#print(trivAnswer)
 	bonus = bone
 	
 # Spawns the lander in the top middle of the screen
@@ -202,7 +202,7 @@ func crashLanded(type):
 	update_score_display()
 
 func start(planet):
-	print(planet)
+	#print(planet)
 	Signalbus.emit_signal("deactivate")
 	var correct
 	var correctAnswer = ""
@@ -404,10 +404,10 @@ func create_stars():
 			#x = rng.randi_range(50,1100)
 			#y = rng.randi_range(50,600)
 		celeb.position = Vector2(x,y)
-		print("(" + str(x) + ", " + str(y) + ")")
+		#print("(" + str(x) + ", " + str(y) + ")")
 		$starset.add_child(celeb)
 		stars.append(celeb)
-	print("done")
+	#print("done")
 
 func destroy_stars():
 	for i in stars:
