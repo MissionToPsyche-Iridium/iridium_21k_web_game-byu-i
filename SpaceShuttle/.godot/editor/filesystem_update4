@@ -11,4 +11,6 @@ res://placement_test.tscn
 res://Meteorite.tscn
 res://ground.tscn
 res://ground_2.tscn
-res://Trivia.json
+res://player.gd
+res://hard_player.gd
+res://start.gd

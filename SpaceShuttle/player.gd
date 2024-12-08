@@ -81,5 +81,8 @@ func _on_easy_area_2d_area_entered(area: Area2D):
 		else:
 			pass
 	else:
-		destroy_rocket("crashLanded")
+		if canBeHit == true:
+			destroy_rocket("crashLanded")
+		else:
+			pass
 	pass # Replace with function body.

@@ -49,11 +49,11 @@ func _process(delta: float) -> void:
 				#if rocket is right leaning
 				if rotation_degrees > 0:
 					#acelerate it upward proportinal to how upward its facing
-					ShipVelocity.y -= thrusterPower * (.9 - (rotation_degrees*.01)) * decendingFactor
+					ShipVelocity.y -= (thrusterPower * (.9 - (rotation_degrees*.01)) * decendingFactor)
 					#acelerate it to the right proportinal to how right its facing
 					ShipVelocity.x += thrusterPower * (rotation_degrees*.01) * .3
 				if rotation_degrees < 0:
-					ShipVelocity.y -= thrusterPower * (.9 - (rotation_degrees*.01)) * decendingFactor
+					ShipVelocity.y -= (thrusterPower * (-.9 - (rotation_degrees*.01)) * decendingFactor)
 					ShipVelocity.x += thrusterPower * (rotation_degrees*.01) * .3
 		if ShipVelocity.y > MaxSpeedYPositive:
 			ShipVelocity.y = MaxSpeedYPositive
@@ -122,5 +122,8 @@ func _on_area_2d_area_entered(area: Area2D):
 		else:
 			pass
 	else:
-		destroy_rocket("crashLanded")
+		if canBeHit == true:
+			destroy_rocket("crashLanded")
+		else:
+			pass
 	pass # Replace with function body.

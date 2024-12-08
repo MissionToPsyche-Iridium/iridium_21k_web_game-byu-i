@@ -48,7 +48,7 @@ func _on_start_button_pressed():
 # takes user through tutorial
 func _on_tutorial_button_pressed():
 	hide_stc_buttons()
-	pass
+	$TutorialDifficulty.show()
 
 # Will display credits then return the user back to the start screen
 func _on_credits_button_pressed():
@@ -419,3 +419,20 @@ func destroy_stars():
 #	$to_planets.hide()
 	
 	
+
+# Going through the tutorial pages
+func _on_to_next_1_pressed():
+	$TutorialDifficulty.hide()
+	$TutorialTrivia.show()
+# Going through the tutorial pages
+func _on_to_next_2_pressed():
+	$TutorialTrivia.hide()
+	$TutorialCorrect.show()
+# Going through the tutorial pages
+func _on_to_next_3_pressed():
+	$TutorialCorrect.hide()
+	$TutorialLander.show()
+# Going through the tutorial pages
+func _on_to_next_4_pressed():
+	show_stc_buttons()
+	$TutorialLander.hide()
