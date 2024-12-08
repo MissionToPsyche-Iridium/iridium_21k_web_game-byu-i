@@ -560,10 +560,10 @@ offset_bottom = -72.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="TutorialLander"]
-offset_left = -82.0
-offset_top = -215.0
-offset_right = 258.0
-offset_bottom = -175.0
+offset_left = -58.0
+offset_top = -254.0
+offset_right = 561.0
+offset_bottom = -167.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="TutorialLander"]
@@ -581,11 +581,14 @@ offset_bottom = 177.0
 text = "Land your spaceship on the landing pad to win."
 
 [node name="landingpadLabel2" type="Label" parent="TutorialLander"]
-offset_left = -60.0
-offset_top = -220.0
-offset_right = 252.0
-offset_bottom = -171.0
-text = "Land your spaceship on the landing pad."
+offset_left = -53.0
+offset_top = -247.0
+offset_right = 545.0
+offset_bottom = -172.0
+text = "Land your spaceship on the landing pad.
+To move the ship use W to use your booster. Use A and D to move left and right
+(or tilt the shuttle on the harder difficulties)."
+horizontal_alignment = 1
 
 [node name="landingpadLabel3" type="Label" parent="TutorialLander"]
 offset_left = -368.0
@@ -629,7 +632,7 @@ default_color = Color(1, 0.02, 0.0363331, 1)
 
 [node name="Line2D5" type="Line2D" parent="TutorialLander"]
 position = Vector2(-574, -331)
-points = PackedVector2Array(661, 145, 693, 205)
+points = PackedVector2Array(796, 166, 739, 221)
 width = 5.0
 default_color = Color(1, 0.02, 0.0363331, 1)
 
@@ -641,8 +644,8 @@ offset_right = 1124.0
 offset_bottom = 620.0
 text = "BACK TO START"
 
-[connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]
 [connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]
 [connection signal="pressed" from="tutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="creditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MusicButton" to="." method="_on_music_button_pressed"]
