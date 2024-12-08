@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 					#acelerate it to the right proportinal to how right its facing
 					ShipVelocity.x += thrusterPower * (rotation_degrees*.01) * .3
 				if rotation_degrees < 0:
-					ShipVelocity.y -= (thrusterPower * (-.9 - (rotation_degrees*.01)) * decendingFactor)
+					ShipVelocity.y -= (thrusterPower * (.9 - (-rotation_degrees*.01)) * decendingFactor)
 					ShipVelocity.x += thrusterPower * (rotation_degrees*.01) * .3
 		if ShipVelocity.y > MaxSpeedYPositive:
 			ShipVelocity.y = MaxSpeedYPositive
