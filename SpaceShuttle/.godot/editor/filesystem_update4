@@ -11,6 +11,3 @@ res://placement_test.tscn
 res://Meteorite.tscn
 res://ground.tscn
 res://ground_2.tscn
-res://player.gd
-res://landing_pad.gd
-res://hard_player.gd
