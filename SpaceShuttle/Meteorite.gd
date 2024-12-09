@@ -6,8 +6,8 @@ func _ready():
 	set_physics_process(true)
 	position.x = randf() * get_viewport().size.x
 	position.y = -30
-	speed.x = randf_range(-200, 200)
-	speed.y = randf_range(100, 300)
+	speed.x = randf_range(-150, 150)
+	speed.y = randf_range(100, 200)
 
 func _physics_process(delta):
 	position += speed * delta
