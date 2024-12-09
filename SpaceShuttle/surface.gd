@@ -19,9 +19,11 @@ func _ready() -> void:
 	Signalbus.remove_meteor.connect(remove_meteorite)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	pass
 
+@warning_ignore("unused_parameter")
 func create_ground(diff, pl):
 	#var g = ground.instantiate()
 	#rng between 500-600, create 13 vectors (x,y)
@@ -76,6 +78,7 @@ func create_ground(diff, pl):
 		points.insert(i,lpEndPos)
 		#print(points)
 	var c = 1
+	@warning_ignore("unused_variable")
 	var pAng
 	for pos in points:
 		#if pos != lpPos:
@@ -85,6 +88,7 @@ func create_ground(diff, pl):
 		planet.append(g)
 		var n = points[c]
 		var gPos = g.position
+		@warning_ignore("confusable_local_declaration")
 		var ang = gPos.angle_to_point(n)
 		g.rotation = ang
 		var distance = gPos.distance_to(n)
@@ -101,7 +105,9 @@ func create_ground(diff, pl):
 	var stp
 	var enp
 	
+	@warning_ignore("unused_variable")
 	var x1 = Xs[0]
+	@warning_ignore("unused_variable")
 	var x2 = Xs[12]
 	
 	# testing code

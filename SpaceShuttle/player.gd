@@ -4,8 +4,8 @@ var MaxSpeedYPositive = 2
 var MaxSpeedYNegative = -1
 var MaxSpeedXPositive = 2
 var MaxSpeedXNegative = -2
-var gravity = .03
-var thrusterPower = .1
+var gravity = .02
+var thrusterPower = .06
 var accelerationLeft = .05 
 var accelerationRight = .05 
 var win = false
@@ -46,16 +46,19 @@ func _process(delta):
 		position.x += ShipVelocity.x 
 		position.y += ShipVelocity.y
 		
-		if position.y >= 650:
-			destroy_rocket("crashLanded")
+		#if position.y >= 650:
+			#destroy_rocket("crashLanded")
 	elif win == true:
 		ShipVelocity = 0
 		#lander_win()
 
 func destroy_rocket(type):
 	#write signal before queue_free
-	Signalbus.emit_signal("landed_failed",type)
-	queue_free()
+	if win == false:
+		Signalbus.emit_signal("landed_failed",type)
+		queue_free()
+	else:
+		pass
 
 func landed_rocket():
 	Signalbus.emit_signal("landed_complete")
@@ -81,7 +84,8 @@ func _on_easy_area_2d_area_entered(area: Area2D):
 		else:
 			pass
 	else:
-		if canBeHit == true:
+		if canBeHit == true and area.get_name() == "lander_box":
+			print("crashed")
 			destroy_rocket("crashLanded")
 		else:
 			pass

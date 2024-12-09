@@ -108,7 +108,7 @@ func _on_area_2d_area_entered(area: Area2D):
 		canBeHit = false
 		if rotation_degrees > 60 or rotation_degrees < -60:
 			destroy_rocket("landedSideways")
-		elif ShipVelocity.y > 1.49:
+		elif ShipVelocity.y > 1.49 and difficulty == "Hard":
 			destroy_rocket("hardHit")
 		else:
 			rotation_degrees = 0
