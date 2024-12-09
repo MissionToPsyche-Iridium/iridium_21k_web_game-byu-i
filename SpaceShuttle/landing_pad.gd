@@ -14,4 +14,4 @@ func _process(delta: float) -> void:
 
 func _on_lander_box_area_entered(area: Area2D) -> void:
 	if area.get_name() == "ground":
-		position.x += 1
+		position.x += 3

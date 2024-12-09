@@ -1,6 +1,6 @@
 extends Node2D
 var ShipVelocity = Vector2()
-var MaxSpeedYPositive = 2
+var MaxSpeedYPositive = 1
 var MaxSpeedYNegative = -1
 var MaxSpeedXPositive = 2
 var MaxSpeedXNegative = -2
@@ -84,7 +84,7 @@ func _on_easy_area_2d_area_entered(area: Area2D):
 		else:
 			pass
 	else:
-		if canBeHit == true and area.get_name() == "lander_box":
+		if canBeHit == true and area.get_name() != "lander_box":
 			print("crashed")
 			destroy_rocket("crashLanded")
 		else:
