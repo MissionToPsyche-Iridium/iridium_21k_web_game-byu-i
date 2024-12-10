@@ -11,3 +11,5 @@ signal remove_meteor(mName)
 
 signal activate()
 signal deactivate()
+
+signal hint(key)

@@ -2,6 +2,7 @@ extends Node2D
 
 var rng = RandomNumberGenerator.new()
 var file_path = "res://Trivia.json"
+var hint_path = "res://hints.json"
 var prevBQ = []
 var prevQ = []
 var qCount = 0
@@ -10,11 +11,14 @@ var prevQemptied
 var difficulty
 var question
 var answer
+var hints
 var triv
 
 # Called when the node enters the scene tree for the first time
 func _ready() -> void:
 	read_json()
+	read_hints()
+	Signalbus.hint.connect(hint)
 	#test_json()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame
@@ -40,6 +44,13 @@ func read_json():
 		var content = file.get_as_text()
 		var json = JSON.new()
 		triv = json.parse_string(content)
+
+func read_hints():
+	if FileAccess.file_exists(file_path):
+		var file = FileAccess.open(hint_path, FileAccess.READ)
+		var content = file.get_as_text()
+		var json = JSON.new()
+		hints = json.parse_string(content)
 
 # Reads the JSON file to get a trivia question and its answer
 func getTriviaQuestion():
@@ -130,3 +141,12 @@ func test_json():
 				num = 1
 		else:
 			num += 1
+
+func hint(key):
+	$TextureRect/Label.text = hints[key]
+	$TextureRect/Button.show()
+
+
+func _on_button_pressed() -> void:
+	$TextureRect/Label.text = question
+	$TextureRect/Button.hide()

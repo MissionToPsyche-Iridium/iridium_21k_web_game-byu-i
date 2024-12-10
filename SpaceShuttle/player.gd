@@ -10,6 +10,7 @@ var accelerationLeft = .05
 var accelerationRight = .05 
 var win = false
 var canBeHit = true
+var ignore = ["Sector24", "Sector33", "Sector42", "Sector51"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -76,6 +77,8 @@ func _on_easy_area_2d_area_entered(area: Area2D):
 		canBeHit = false
 		landed_rocket()
 		print("landed")
+	elif (area.get_name() in ignore):
+		pass
 	elif area.get_name() == "planet_area":
 		pass
 	elif area.get_name() == "Meteorite_Area":

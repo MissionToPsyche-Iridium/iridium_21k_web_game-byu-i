@@ -136,7 +136,7 @@ func create_ground(diff, pl):
 				ri = rng.randi_range(0,4)
 				rc = pluto[ri]
 				plC = getColorPts(rc)
-			"Psyche":
+			"16 Psyche":
 				ri = rng.randi_range(0,5)
 				rc = psyche[ri]
 				plC = getColorPts(rc)

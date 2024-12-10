@@ -75,6 +75,7 @@ func _on_audio_button_pressed():
 func _on_easy_button_pressed():
 	hide_difficulty_buttons()
 	difficulty = "Easy"
+	$planets.difficulty = "Easy"
 	$Trivia.difficulty = "Easy"
 	to_trivia()
 	$ScoreLabel.show()
@@ -90,6 +91,7 @@ func _on_medium_button_pressed():
 	hide_difficulty_buttons()
 	difficulty = "Medium"
 	$Trivia.difficulty = "Medium"
+	$planets.difficulty = "Medium"
 	to_trivia()
 	$ScoreLabel.show()
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -104,6 +106,7 @@ func _on_hard_button_pressed():
 	hide_difficulty_buttons()
 	difficulty = "Hard"
 	$Trivia.difficulty = "Hard"
+	$planets.difficulty = "Hard"
 	to_trivia()
 	$ScoreLabel.show()
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -207,7 +210,8 @@ func start(planet):
 	var correct
 	var correctAnswer = ""
 	
-	
+	$planets.destroyHints()
+	$Trivia._on_button_pressed()
 	
 	# Hide the trivia question when starting
 	$Trivia.hide()
@@ -377,6 +381,11 @@ func to_trivia():
 
 	$Trivia.getTriviaQuestion()
 	$Trivia.show()
+	if (bonus):
+		for i in trivAnswer:
+			$planets.createHints(i)
+	else:
+		$planets.createHints(trivAnswer)
 	show_planets()
 
 func _on_to_next_pressed():

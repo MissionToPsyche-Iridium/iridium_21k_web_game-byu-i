@@ -1,10 +1,10 @@
+Button
+CollisionShape2D
+Area2D
+Node2D
+AnimatedSprite2D
 Label
 ColorRect
 Line2D
 Sprite2D
-Area2D
-CollisionShape2D
-Node2D
-Button
 Timer
-AnimatedSprite2D

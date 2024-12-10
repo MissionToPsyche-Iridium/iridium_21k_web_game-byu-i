@@ -13,3 +13,15 @@ res://mouse.tscn
 res://trivia.tscn
 res://landing_pad.tscn
 res://Meteorite.tscn
+res://hints.json
+res://hints.tscn
+res://hints.gd
+res://start.gd
+res://star.tscn
+res://planets.gd
+res://star.gd
+res://signalbus.gd
+res://trivia.gd
+res://area_2d.gd
+res://player.gd
+res://hard_player.gd
