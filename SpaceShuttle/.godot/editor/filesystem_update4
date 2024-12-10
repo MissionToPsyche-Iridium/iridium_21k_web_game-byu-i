@@ -9,5 +9,4 @@ res://landing_pad.tscn
 res://surface.tscn
 res://Meteorite.tscn
 res://hints.tscn
-res://main.gd
-res://Meteorite.gd
+res://start.gd

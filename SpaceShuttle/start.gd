@@ -234,6 +234,7 @@ func start(planet):
 			correct = true
 			# Change the label
 			$crash_label.text = "Congratulations!  You got the correct answer on a bonus question!"
+			trivAnswer = planet
 		else:
 			# Incorrect answer
 			correct = false
