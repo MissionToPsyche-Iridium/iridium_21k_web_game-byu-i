@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxff70mirvhda"]
+[gd_scene load_steps=3 format=3 uid="uid://cxff70mirvhda"]
+
+[ext_resource type="Script" path="res://ground_2.gd" id="1_j6gbn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7omve"]
 
 [node name="Ground2" type="Node2D"]
 scale = Vector2(1, 4)
+script = ExtResource("1_j6gbn")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1.0
