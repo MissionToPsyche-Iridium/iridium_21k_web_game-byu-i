@@ -19,6 +19,7 @@ texture = ExtResource("2_isrk1")
 
 [node name="Button" type="Button" parent="TextureRect"]
 visible = false
+layout_mode = 0
 offset_left = 584.848
 offset_right = 602.848
 offset_bottom = 31.0
