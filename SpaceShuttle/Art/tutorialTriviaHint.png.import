@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b08d6tb4o4fkh"
-path="res://.godot/imported/TutorialTrivia.png-af89777c9cfed5c4da16b6e721053ce0.ctex"
+uid="uid://d351ttfjrcrix"
+path="res://.godot/imported/tutorialTriviaHint.png-527b3039dd922aa2b6c18198e2d09875.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/TutorialTrivia.png"
-dest_files=["res://.godot/imported/TutorialTrivia.png-af89777c9cfed5c4da16b6e721053ce0.ctex"]
+source_file="res://Art/tutorialTriviaHint.png"
+dest_files=["res://.godot/imported/tutorialTriviaHint.png-527b3039dd922aa2b6c18198e2d09875.ctex"]
 
 [params]
 

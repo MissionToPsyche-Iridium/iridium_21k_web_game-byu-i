@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://c6r0iyo5gp7si" path="res://trivia.tscn" id="3_tauyr"]
 [ext_resource type="PackedScene" uid="uid://4qwjhi6s1wsb" path="res://planets.tscn" id="4_f23nt"]
 [ext_resource type="Texture2D" uid="uid://ccjgia3ujgx0o" path="res://Art/TutorialDifficulty.png" id="5_vnjq7"]
-[ext_resource type="Texture2D" uid="uid://b08d6tb4o4fkh" path="res://Art/TutorialTrivia.png" id="6_uepe0"]
 [ext_resource type="Texture2D" uid="uid://uubh4g8nrkw6" path="res://Art/TutorialCorrect.png" id="7_gvg2o"]
 [ext_resource type="Texture2D" uid="uid://k11vko2d50aa" path="res://Art/TutorialLander.png" id="8_chu7u"]
+[ext_resource type="Texture2D" uid="uid://d351ttfjrcrix" path="res://Art/tutorialTriviaHint.png" id="9_3i7rx"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_f02o3"]
 specular_color = Color(0, 0, 0, 1)
@@ -330,139 +330,6 @@ offset_right = 1124.0
 offset_bottom = 620.0
 text = "NEXT PAGE"
 
-[node name="TutorialTrivia" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(576, 320)
-texture = ExtResource("6_uepe0")
-
-[node name="ColorRect" type="ColorRect" parent="TutorialTrivia"]
-offset_left = -356.0
-offset_top = 251.0
-offset_right = 107.0
-offset_bottom = 302.0
-color = Color(0, 0, 0, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="TutorialTrivia"]
-offset_left = -552.0
-offset_top = -172.0
-offset_right = -363.0
-offset_bottom = -119.0
-color = Color(0, 0, 0, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="TutorialTrivia"]
-offset_left = 218.0
-offset_top = -265.0
-offset_right = 555.0
-offset_bottom = -180.0
-color = Color(0, 0, 0, 1)
-
-[node name="questionLabel" type="Label" parent="TutorialTrivia"]
-offset_left = 183.0
-offset_top = -265.0
-offset_right = 585.0
-offset_bottom = -190.0
-text = "A random question will display
-here and the answer will be1 (or multiple)
-of the 10 celestial bodies on the screen."
-horizontal_alignment = 1
-
-[node name="spaceshipLabel" type="Label" parent="TutorialTrivia"]
-offset_left = -547.0
-offset_top = -172.0
-offset_right = -371.0
-offset_bottom = -123.0
-text = "The spaceship that will
-take you to the planet."
-
-[node name="bodyLabel" type="Label" parent="TutorialTrivia"]
-offset_left = -350.0
-offset_top = 251.0
-offset_right = 92.0
-offset_bottom = 300.0
-text = "Select the corresponding planet, dwarf planet or asteroid
-that is the correct answer to the question"
-horizontal_alignment = 1
-
-[node name="Line2D" type="Line2D" parent="TutorialTrivia"]
-position = Vector2(-575, -331)
-points = PackedVector2Array(178, 136, 119, 158)
-width = 5.0
-default_color = Color(1, 0.02, 0.0363331, 1)
-
-[node name="Line2D2" type="Line2D" parent="TutorialTrivia"]
-position = Vector2(-575, -331)
-points = PackedVector2Array(825, 76, 592, 104)
-width = 5.0
-default_color = Color(1, 0.02, 0.0363331, 1)
-
-[node name="Line2D3" type="Line2D" parent="TutorialTrivia"]
-position = Vector2(-575, -331)
-points = PackedVector2Array(687, 549, 408, 567)
-width = 5.0
-default_color = Color(1, 0.02, 0.0363331, 1)
-
-[node name="Line2D4" type="Line2D" parent="TutorialTrivia"]
-position = Vector2(-575, -331)
-points = PackedVector2Array(858, 225, 408, 567)
-width = 5.0
-default_color = Color(1, 0.02, 0.0363331, 1)
-
-[node name="Line2D5" type="Line2D" parent="TutorialTrivia"]
-position = Vector2(-575, -331)
-points = PackedVector2Array(1071, 364, 408, 567)
-width = 5.0
-default_color = Color(1, 0.02, 0.0363331, 1)
-
-[node name="Line2D6" type="Line2D" parent="TutorialTrivia"]
-position = Vector2(-575, -331)
-points = PackedVector2Array(950, 471, 408, 567)
-width = 5.0
-default_color = Color(1, 0.02, 0.0363331, 1)
-
-[node name="Line2D7" type="Line2D" parent="TutorialTrivia"]
-position = Vector2(-575, -331)
-points = PackedVector2Array(505, 384, 408, 567)
-width = 5.0
-default_color = Color(1, 0.02, 0.0363331, 1)
-
-[node name="Line2D8" type="Line2D" parent="TutorialTrivia"]
-position = Vector2(-575, -331)
-points = PackedVector2Array(414, 316, 408, 567)
-width = 5.0
-default_color = Color(1, 0.02, 0.0363331, 1)
-
-[node name="Line2D9" type="Line2D" parent="TutorialTrivia"]
-position = Vector2(-575, -331)
-points = PackedVector2Array(373, 256, 408, 567)
-width = 5.0
-default_color = Color(1, 0.02, 0.0363331, 1)
-
-[node name="Line2D10" type="Line2D" parent="TutorialTrivia"]
-position = Vector2(-575, -331)
-points = PackedVector2Array(322, 433, 408, 567)
-width = 5.0
-default_color = Color(1, 0.02, 0.0363331, 1)
-
-[node name="Line2D11" type="Line2D" parent="TutorialTrivia"]
-position = Vector2(-575, -331)
-points = PackedVector2Array(194, 520, 408, 567)
-width = 5.0
-default_color = Color(1, 0.02, 0.0363331, 1)
-
-[node name="Line2D12" type="Line2D" parent="TutorialTrivia"]
-position = Vector2(-575, -331)
-points = PackedVector2Array(134, 269, 408, 567)
-width = 5.0
-default_color = Color(1, 0.02, 0.0363331, 1)
-
-[node name="toNext2" type="Button" parent="TutorialTrivia"]
-top_level = true
-offset_left = 974.0
-offset_top = 545.0
-offset_right = 1124.0
-offset_bottom = 620.0
-text = "NEXT PAGE"
-
 [node name="TutorialCorrect" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(574, 318)
@@ -644,6 +511,163 @@ offset_right = 1124.0
 offset_bottom = 620.0
 text = "BACK TO START"
 
+[node name="TutorialTriviaHint" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(577, 320)
+texture = ExtResource("9_3i7rx")
+
+[node name="ColorRect" type="ColorRect" parent="TutorialTriviaHint"]
+offset_left = -356.0
+offset_top = 251.0
+offset_right = 107.0
+offset_bottom = 302.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="TutorialTriviaHint"]
+offset_left = 127.0
+offset_top = -20.0
+offset_right = 406.0
+offset_bottom = 84.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="TutorialTriviaHint"]
+offset_left = -552.0
+offset_top = -172.0
+offset_right = -363.0
+offset_bottom = -119.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="TutorialTriviaHint"]
+offset_left = 218.0
+offset_top = -265.0
+offset_right = 555.0
+offset_bottom = -180.0
+color = Color(0, 0, 0, 1)
+
+[node name="questionLabel" type="Label" parent="TutorialTriviaHint"]
+offset_left = 183.0
+offset_top = -265.0
+offset_right = 585.0
+offset_bottom = -190.0
+text = "A random question will display
+here and the answer will be1 (or multiple)
+of the 10 celestial bodies on the screen."
+horizontal_alignment = 1
+
+[node name="spaceshipLabel" type="Label" parent="TutorialTriviaHint"]
+offset_left = -547.0
+offset_top = -172.0
+offset_right = -371.0
+offset_bottom = -123.0
+text = "The spaceship that will
+take you to the planet."
+
+[node name="spaceshipLabel2" type="Label" parent="TutorialTriviaHint"]
+offset_left = 137.0
+offset_top = -25.0
+offset_right = 410.0
+offset_bottom = 76.0
+text = "Click the twinkling star to get a
+new hint about the same planet.
+This star will get bigger and smaller
+while standing still."
+horizontal_alignment = 1
+
+[node name="bodyLabel" type="Label" parent="TutorialTriviaHint"]
+offset_left = -350.0
+offset_top = 251.0
+offset_right = 92.0
+offset_bottom = 300.0
+text = "Select the corresponding planet, dwarf planet or asteroid
+that is the correct answer to the question"
+horizontal_alignment = 1
+
+[node name="Line2D" type="Line2D" parent="TutorialTriviaHint"]
+position = Vector2(-575, -331)
+points = PackedVector2Array(235, 113, 119, 158)
+width = 5.0
+default_color = Color(1, 0.02, 0.0363331, 1)
+
+[node name="Line2D13" type="Line2D" parent="TutorialTriviaHint"]
+position = Vector2(-575, -331)
+points = PackedVector2Array(1076, 266, 986, 311)
+width = 5.0
+default_color = Color(1, 0.02, 0.0363331, 1)
+
+[node name="Line2D2" type="Line2D" parent="TutorialTriviaHint"]
+position = Vector2(-575, -331)
+points = PackedVector2Array(825, 76, 686, 96)
+width = 5.0
+default_color = Color(1, 0.02, 0.0363331, 1)
+
+[node name="Line2D3" type="Line2D" parent="TutorialTriviaHint"]
+position = Vector2(-575, -331)
+points = PackedVector2Array(687, 549, 408, 567)
+width = 5.0
+default_color = Color(1, 0.02, 0.0363331, 1)
+
+[node name="Line2D4" type="Line2D" parent="TutorialTriviaHint"]
+position = Vector2(-575, -331)
+points = PackedVector2Array(855, 189, 408, 567)
+width = 5.0
+default_color = Color(1, 0.02, 0.0363331, 1)
+
+[node name="Line2D5" type="Line2D" parent="TutorialTriviaHint"]
+position = Vector2(-575, -331)
+points = PackedVector2Array(1082, 383, 408, 567)
+width = 5.0
+default_color = Color(1, 0.02, 0.0363331, 1)
+
+[node name="Line2D6" type="Line2D" parent="TutorialTriviaHint"]
+position = Vector2(-575, -331)
+points = PackedVector2Array(950, 471, 408, 567)
+width = 5.0
+default_color = Color(1, 0.02, 0.0363331, 1)
+
+[node name="Line2D7" type="Line2D" parent="TutorialTriviaHint"]
+position = Vector2(-575, -331)
+points = PackedVector2Array(505, 384, 408, 567)
+width = 5.0
+default_color = Color(1, 0.02, 0.0363331, 1)
+
+[node name="Line2D8" type="Line2D" parent="TutorialTriviaHint"]
+position = Vector2(-575, -331)
+points = PackedVector2Array(414, 316, 408, 567)
+width = 5.0
+default_color = Color(1, 0.02, 0.0363331, 1)
+
+[node name="Line2D9" type="Line2D" parent="TutorialTriviaHint"]
+position = Vector2(-575, -331)
+points = PackedVector2Array(373, 256, 408, 567)
+width = 5.0
+default_color = Color(1, 0.02, 0.0363331, 1)
+
+[node name="Line2D10" type="Line2D" parent="TutorialTriviaHint"]
+position = Vector2(-575, -331)
+points = PackedVector2Array(322, 433, 408, 567)
+width = 5.0
+default_color = Color(1, 0.02, 0.0363331, 1)
+
+[node name="Line2D11" type="Line2D" parent="TutorialTriviaHint"]
+position = Vector2(-575, -331)
+points = PackedVector2Array(194, 520, 408, 567)
+width = 5.0
+default_color = Color(1, 0.02, 0.0363331, 1)
+
+[node name="Line2D12" type="Line2D" parent="TutorialTriviaHint"]
+position = Vector2(-575, -331)
+points = PackedVector2Array(134, 269, 408, 567)
+width = 5.0
+default_color = Color(1, 0.02, 0.0363331, 1)
+
+[node name="toNext2" type="Button" parent="TutorialTriviaHint"]
+top_level = true
+offset_left = 974.0
+offset_top = 545.0
+offset_right = 1124.0
+offset_bottom = 620.0
+text = "NEXT PAGE"
+
 [connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]
 [connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="tutorialButton" to="." method="_on_tutorial_button_pressed"]
@@ -657,6 +681,6 @@ text = "BACK TO START"
 [connection signal="pressed" from="returnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="StartLander" to="." method="playLander"]
 [connection signal="pressed" from="TutorialDifficulty/toNext1" to="." method="_on_to_next_1_pressed"]
-[connection signal="pressed" from="TutorialTrivia/toNext2" to="." method="_on_to_next_2_pressed"]
 [connection signal="pressed" from="TutorialCorrect/toNext3" to="." method="_on_to_next_3_pressed"]
 [connection signal="pressed" from="TutorialLander/toNext4" to="." method="_on_to_next_4_pressed"]
+[connection signal="pressed" from="TutorialTriviaHint/toNext2" to="." method="_on_to_next_2_pressed"]

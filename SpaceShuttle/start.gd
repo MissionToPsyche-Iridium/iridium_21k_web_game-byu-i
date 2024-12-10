@@ -433,10 +433,10 @@ func destroy_stars():
 # Going through the tutorial pages
 func _on_to_next_1_pressed():
 	$TutorialDifficulty.hide()
-	$TutorialTrivia.show()
+	$TutorialTriviaHint.show()
 # Going through the tutorial pages
 func _on_to_next_2_pressed():
-	$TutorialTrivia.hide()
+	$TutorialTriviaHint.hide()
 	$TutorialCorrect.show()
 # Going through the tutorial pages
 func _on_to_next_3_pressed():
