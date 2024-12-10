@@ -1,5 +1,7 @@
-res://main.tscn
 res://planets.tscn
+res://Trivia.json
+res://hints.tscn
+res://main.tscn
 res://start.tscn
 res://player.tscn
 res://hard_player.tscn
@@ -8,6 +10,6 @@ res://trivia.tscn
 res://landing_pad.tscn
 res://surface.tscn
 res://Meteorite.tscn
-res://hints.tscn
-res://start.gd
-res://Trivia.json
+res://hints.gd
+res://player.gd
+res://hard_player.gd

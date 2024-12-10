@@ -22,7 +22,6 @@ func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int):
 
 
 func _on_area_2d_mouse_entered() -> void:
-	print("entered")
 	$Area2D.active = true
 	Signalbus.emit_signal("deactivate")
 

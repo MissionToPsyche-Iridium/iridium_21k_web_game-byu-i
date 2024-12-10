@@ -76,7 +76,7 @@ func _on_easy_area_2d_area_entered(area: Area2D):
 	if area.get_name() == "lander_box":
 		canBeHit = false
 		landed_rocket()
-		print("landed")
+		#print("landed")
 	elif (area.get_name() in ignore):
 		pass
 	elif area.get_name() == "planet_area":

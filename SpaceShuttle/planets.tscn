@@ -27,7 +27,7 @@
 radius = 303.832
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xoauh"]
-size = Vector2(370, 157)
+size = Vector2(351, 157)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jb8yx"]
 size = Vector2(380, 131)
@@ -393,7 +393,7 @@ text = "Pluto"
 [node name="Sector24" type="Area2D" parent="Spaces"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spaces/Sector24"]
-position = Vector2(196, 91)
+position = Vector2(186.5, 91)
 shape = SubResource("RectangleShape2D_xoauh")
 
 [node name="Sector33" type="Area2D" parent="Spaces"]
