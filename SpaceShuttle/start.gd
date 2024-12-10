@@ -370,6 +370,7 @@ func to_trivia():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	ms = mouse.instantiate()
 	add_child(ms)
+	ms.z_index = 1
 	
 	match difficulty:
 		"Easy":
