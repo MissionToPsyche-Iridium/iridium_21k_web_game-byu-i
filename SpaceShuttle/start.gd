@@ -379,7 +379,7 @@ func to_trivia():
 		"Medium":
 			ms.setMedium()
 		"Hard":
-			ms.setMedium()
+			ms.setHard()
 
 	$Trivia.getTriviaQuestion()
 	$Trivia.show()

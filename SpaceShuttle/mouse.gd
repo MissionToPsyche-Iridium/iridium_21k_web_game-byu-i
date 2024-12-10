@@ -1,6 +1,6 @@
 extends Node2D
 var medium = preload("res://Art/Rocket Ship 1.0.png")
-var hard
+var hard = preload("res://Art/Artemis.png")
 var difficulty
 var lastPlace = Vector2()
 
@@ -16,6 +16,11 @@ func _process(delta: float) -> void:
 			$Sprite2D.rotation_degrees = 90
 		elif position.x - lastPlace.x < 0:
 			$Sprite2D.rotation_degrees = 270
+	elif difficulty == "Hard":
+		if position.x - lastPlace.x > 0:
+			$Sprite2D.flip_h = false
+		elif position.x - lastPlace.x < 0:
+			$Sprite2D.flip_h = true
 	lastPlace = position
 
 func setMedium():
@@ -24,4 +29,5 @@ func setMedium():
 	difficulty = "Med"
 
 func setHard():
-	pass
+	$Sprite2D.set_texture(hard)
+	difficulty = "Hard"
