@@ -13,6 +13,9 @@ var bonus
 var WoL
 var pc
 var ms
+var isAudioOn = true 		# This tracks wether the audio is on or not.
+var correct_sound
+var incorrect_sound
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,23 +25,24 @@ func _ready() -> void:
 	Signalbus.landed_complete.connect(landed)
 	Signalbus.landed_failed.connect(crashLanded)
 	Signalbus.start.connect(start)
+	load_sound_effects()
 
+# This function is called automatically every frame the game is running.
 func _process(delta: float):
+	# This moves the background stars across the screen.
 	for star in stars:
 		star.position.x -= .5
 		if star.position.x == -10:
 			star.position.x = 1162
 
+# This function updates the player's score so the new value is displayed on screen.
 func update_score_display():
 	$ScoreLabel.text = "Score: %d" % score
 	#print(score)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	#pass
 
-func Play():
-	pass
+#func Play():
+#	pass
 
 # Hides buttons and shows difficutly options
 func _on_start_button_pressed():
@@ -63,14 +67,41 @@ func _on_return_button_pressed():
 	$disclaimer.hide()
 	pass
 
-# Toggles the mute button to either mute or unmute
+# Toggles the mute button to either mute or unmute the music.
 func _on_music_button_pressed():
-	pass # Replace with function body.
+	# If the music is playing, then pause it.
+	if $MusicPlayer.stream_paused == false:
+		$MusicPlayer.stream_paused = true
+		$MusicPlayer/MusicOff.show()
+	# If the music isn't playing, then resume it.
+	else:
+		$MusicPlayer.stream_paused = false
+		$MusicPlayer/MusicOff.hide()
 
-# Toggles the audio effects button to either mute or unmute
+# Toggles the audio effects (sound effects) button to either mute or unmute
 func _on_audio_button_pressed():
-	pass # Replace with function body.
+	# If the sound effects are on, then turn them off.
+	if isAudioOn == true:
+		isAudioOn = false
+		$SoundEffectPlayer/AudioOffSprite.show()
+	# If he sound effects are off, then turn them on.
+	elif isAudioOn == false:
+		isAudioOn = true
+		$SoundEffectPlayer/AudioOffSprite.hide()
 
+# Plays the sound effect given to it.
+func play_sound_effect(effect_name):
+	# Check that sound effects are enabled.
+	if isAudioOn == true:
+		# Set the audio player's specific sound to be the one that is given.
+		$SoundEffectPlayer.stream = effect_name
+		$SoundEffectPlayer.play()
+		
+# This function loads all the sound effects.
+func load_sound_effects():
+	correct_sound = preload("res://Audio/SoundEffects/correct.mp3")
+	incorrect_sound = preload("res://Audio/SoundEffects/incorrect.mp3")
+	
 # Will take the user to the trivia portion of the game on easy mode
 func _on_easy_button_pressed():
 	hide_difficulty_buttons()
@@ -161,13 +192,16 @@ func tempLander(diff):
 	pc.position = Vector2(600,20)
 	#add_child(pc)
 
-# If the lander is landed
+# If the lander is landed (handles what to do if the lander successfully lands.)
 func landed():
 	#display button
 	$to_next.show()
 	$winner_label.show()
 	WoL = "Win"
 	$Surface.Player_landed()
+	
+	# Play the success sound.
+	play_sound_effect(correct_sound)
 	
 	match difficulty:
 		"Easy":
@@ -179,7 +213,7 @@ func landed():
 	
 	update_score_display()
 	
-# If the lander crash landed	
+# If the lander crash landed	(Handles everything if the landder crashes.)
 func crashLanded(type):
 	#display button
 	$to_next.show()
@@ -193,6 +227,9 @@ func crashLanded(type):
 		$crash_label.text = "Oh No! Your ship hit the landing pad too hard!\nTry again?"
 	$crash_label.show()
 	WoL = "Lose"
+	
+	# Play the incorrect (bad) sound effect.
+	play_sound_effect(incorrect_sound)
 	
 	match difficulty:
 		"Easy":
@@ -230,12 +267,16 @@ func start(planet):
 		
 		# Check the answer
 		if (planet in trivAnswer):
+			# Play the correct sound.
+			play_sound_effect(correct_sound)
 			# Correct answer
 			correct = true
 			# Change the label
 			$crash_label.text = "Congratulations!  You got the correct answer on a bonus question!"
 			trivAnswer = planet
 		else:
+			# Play the incorrect sound effect.
+			play_sound_effect(incorrect_sound)
 			# Incorrect answer
 			correct = false
 			# Change the label
@@ -281,11 +322,15 @@ func start(planet):
 	# If it is not a bonus question
 	else:
 		if planet == trivAnswer:
+			# Play the correct sound.
+			play_sound_effect(correct_sound)
 			# Correct answer
 			correct = true
 			# Change the label
 			$crash_label.text = "Congratulations!  You got the correct answer!"
 		else:
+			# Play the incorrect sound.
+			play_sound_effect(incorrect_sound)
 			# Incorrect answer
 			correct = false
 			# Change the label
