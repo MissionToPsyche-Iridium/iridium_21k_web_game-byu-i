@@ -40,10 +40,6 @@ func update_score_display():
 	$ScoreLabel.text = "Score: %d" % score
 	#print(score)
 
-
-#func Play():
-#	pass
-
 # Hides buttons and shows difficutly options
 func _on_start_button_pressed():
 	hide_stc_buttons()
@@ -61,6 +57,7 @@ func _on_credits_button_pressed():
 	$disclaimer.show()
 	pass
 
+# Takes the player to the main menu when the main menu button is pressed.
 func _on_return_button_pressed():
 	show_stc_buttons()
 	$returnButton.hide()
@@ -213,7 +210,7 @@ func landed():
 	
 	update_score_display()
 	
-# If the lander crash landed	(Handles everything if the landder crashes.)
+# If the lander crash landed (Handles everything if the landder crashes.)
 func crashLanded(type):
 	#display button
 	$to_next.show()
@@ -241,6 +238,7 @@ func crashLanded(type):
 	
 	update_score_display()
 
+# This function essentially grades your answers when you give them.
 func start(planet):
 	#print(planet)
 	Signalbus.emit_signal("deactivate")
@@ -388,7 +386,8 @@ func start(planet):
 	# Show the label
 	$crash_label.show()
 	$crash_label.position.y -= 50
-	
+
+# This function sets up the lander mini game after you've finished on the trivia page. 
 func playLander():
 	$StartLander.hide()
 	
@@ -411,6 +410,7 @@ func playLander():
 #	$med
 #	$hard
 
+# This function gets everything ready to return to the trivia page when the to_next button has been pressed.
 func to_trivia():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	ms = mouse.instantiate()
@@ -435,6 +435,7 @@ func to_trivia():
 		$planets.createHints(trivAnswer)
 	show_planets()
 
+# This function takes you back to the trivia page when the to_next button is pressed.
 func _on_to_next_pressed():
 	$to_next.hide()
 	$winner_label.hide()
@@ -443,6 +444,7 @@ func _on_to_next_pressed():
 	$Trivia.show()
 	to_trivia()
 
+# This function will spawn stars.
 func create_stars():
 	var x
 	var y
@@ -465,6 +467,7 @@ func create_stars():
 		stars.append(celeb)
 	#print("done")
 
+# This function deletes all the stars on the screen.
 func destroy_stars():
 	for i in stars:
 		$starset.remove_child(i)

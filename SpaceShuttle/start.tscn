@@ -148,7 +148,6 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="returnButton" type="Button" parent="."]
-visible = false
 offset_left = 501.0
 offset_top = 370.0
 offset_right = 651.0
