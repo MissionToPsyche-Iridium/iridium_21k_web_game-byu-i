@@ -16,6 +16,8 @@ var ms
 var isAudioOn = true 		# This tracks wether the audio is on or not.
 var correct_sound
 var incorrect_sound
+var hasVisitedPsyche		# This tracks whether the player has been to the psyche astroid yet or not.
+var isOnEarth = false		# This lets the game know if the current planet being visited is Earth or not.
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -38,6 +40,8 @@ func _process(delta: float):
 # This function updates the player's score so the new value is displayed on screen.
 func update_score_display():
 	$ScoreLabel.text = "Score: %d" % score
+	$EndingMessage.text = "Congratulations on your mission to the Psyche astroid!
+You have finished the game with a score of %d" % score
 	#print(score)
 
 # Hides buttons and shows difficutly options
@@ -210,7 +214,7 @@ func landed():
 	
 	update_score_display()
 	
-# If the lander crash landed (Handles everything if the landder crashes.)
+# If the lander crash landed (Handles everything if the lander crashes.)
 func crashLanded(type):
 	#display button
 	$to_next.show()
@@ -386,7 +390,19 @@ func start(planet):
 	# Show the label
 	$crash_label.show()
 	$crash_label.position.y -= 50
+	
+	# Check to see if the answer was Psyche.
+	if trivAnswer == "16 Psyche":
+		# If the answer was Psyche, then mark it as visited so that the game knows to end next time the player lands on earth
+		hasVisitedPsyche = true
+		
+	# Update isOnEarth.
+	if trivAnswer == "Earth":
+		isOnEarth = true
+	else:
+		isOnEarth = false
 
+	
 # This function sets up the lander mini game after you've finished on the trivia page. 
 func playLander():
 	$StartLander.hide()
@@ -404,39 +420,40 @@ func playLander():
 	remove_child(ms)
 	ms = null
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
-#func difficulty():
-#	$easy
-#	$med
-#	$hard
 
 # This function gets everything ready to return to the trivia page when the to_next button has been pressed.
 func to_trivia():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	ms = mouse.instantiate()
-	add_child(ms)
-	ms.z_index = 1
-	
-	match difficulty:
-		"Easy":
-			# Default difficulty 
-			pass
-		"Medium":
-			ms.setMedium()
-		"Hard":
-			ms.setHard()
-
-	$Trivia.getTriviaQuestion()
-	$Trivia.show()
-	if (bonus):
-		for i in trivAnswer:
-			$planets.createHints(i)
+	# Check if the game is ready to end or not.
+	if hasVisitedPsyche and isOnEarth:
+		# The game is ready to end.
+		end_game()
 	else:
-		$planets.createHints(trivAnswer)
-	show_planets()
-
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		ms = mouse.instantiate()
+		add_child(ms)
+		ms.z_index = 1
+		
+		match difficulty:
+			"Easy":
+				# Default difficulty 
+				pass
+			"Medium":
+				ms.setMedium()
+			"Hard":
+				ms.setHard()
+	
+		$Trivia.getTriviaQuestion()
+		$Trivia.show()
+		if (bonus):
+			for i in trivAnswer:
+				$planets.createHints(i)
+		else:
+			$planets.createHints(trivAnswer)
+		show_planets()
+	
 # This function takes you back to the trivia page when the to_next button is pressed.
 func _on_to_next_pressed():
+	
 	$to_next.hide()
 	$winner_label.hide()
 	$crash_label.hide()
@@ -495,3 +512,8 @@ func _on_to_next_3_pressed():
 func _on_to_next_4_pressed():
 	show_stc_buttons()
 	$TutorialLander.hide()
+
+# This function is called when the game has been beaten. It ends the game.
+func end_game():
+	$Trivia.hide()
+	$EndingMessage.show()
