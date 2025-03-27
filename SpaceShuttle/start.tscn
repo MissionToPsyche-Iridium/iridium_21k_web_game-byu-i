@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6qlso1fhp0kp"]
+[gd_scene load_steps=15 format=3 uid="uid://c6qlso1fhp0kp"]
 
 [ext_resource type="Script" path="res://start.gd" id="1_1ny8t"]
 [ext_resource type="PackedScene" uid="uid://ccpv28imegxfg" path="res://surface.tscn" id="2_4neht"]
@@ -8,6 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://uubh4g8nrkw6" path="res://Art/TutorialCorrect.png" id="7_gvg2o"]
 [ext_resource type="Texture2D" uid="uid://k11vko2d50aa" path="res://Art/TutorialLander.png" id="8_chu7u"]
 [ext_resource type="Texture2D" uid="uid://d351ttfjrcrix" path="res://Art/tutorialTriviaHint.png" id="9_3i7rx"]
+[ext_resource type="AudioStream" uid="uid://c5wxbt5k0onj" path="res://Audio/Music/space-station.mp3" id="9_yt2lk"]
+[ext_resource type="Texture2D" uid="uid://d0spr4vg2s318" path="res://Art/MenuItems/SoundOn.png" id="10_1y7ch"]
+[ext_resource type="Texture2D" uid="uid://dbesssmtmhhh6" path="res://Art/MenuItems/musicOn.png" id="10_ngtpm"]
+[ext_resource type="Texture2D" uid="uid://blrae35fqql5i" path="res://Art/MenuItems/SoundOff.png" id="11_d3fsq"]
+[ext_resource type="Texture2D" uid="uid://bxtvh4to2ahuw" path="res://Art/MenuItems/musicOff.png" id="11_ibsim"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_f02o3"]
 specular_color = Color(0, 0, 0, 1)
@@ -42,15 +47,13 @@ offset_bottom = 445.0
 text = "CREDITS"
 
 [node name="MusicButton" type="Button" parent="."]
-visible = false
 top_level = true
 offset_left = 10.0
-offset_top = 10.0
+offset_top = 9.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 39.0
 
 [node name="AudioButton" type="Button" parent="."]
-visible = false
 top_level = true
 offset_left = 50.0
 offset_top = 10.0
@@ -175,10 +178,10 @@ horizontal_alignment = 1
 
 [node name="seniorSD" type="Label" parent="disclaimer"]
 layout_mode = 0
-offset_left = 450.0
-offset_top = -230.0
-offset_right = 701.0
-offset_bottom = -119.0
+offset_left = 117.0
+offset_top = -161.0
+offset_right = 368.0
+offset_bottom = -50.0
 theme_override_font_sizes/font_size = 25
 text = "Senior Software Dev
 & Artist:
@@ -216,6 +219,18 @@ offset_bottom = -319.0
 theme_override_font_sizes/font_size = 25
 text = "Trivia Programmer:
 George Wieland"
+horizontal_alignment = 1
+
+[node name="sd4" type="Label" parent="disclaimer"]
+layout_mode = 0
+offset_left = 737.0
+offset_top = -159.0
+offset_right = 1036.0
+offset_bottom = -86.0
+theme_override_font_sizes/font_size = 25
+text = "Other Developers:
+Damian Wilding
+Benton Hanson"
 horizontal_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="."]
@@ -695,6 +710,40 @@ offset_top = -336.0
 offset_right = -431.0
 offset_bottom = -262.0
 color = Color(0, 0, 0, 1)
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_yt2lk")
+autoplay = true
+parameters/looping = true
+
+[node name="MusicOn" type="Sprite2D" parent="MusicPlayer"]
+position = Vector2(25, 25)
+texture = ExtResource("10_ngtpm")
+
+[node name="MusicOff" type="Sprite2D" parent="MusicPlayer"]
+visible = false
+position = Vector2(25, 25)
+texture = ExtResource("11_ibsim")
+
+[node name="SoundEffectPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioOnSprite" type="Sprite2D" parent="SoundEffectPlayer"]
+position = Vector2(64, 26)
+texture = ExtResource("10_1y7ch")
+
+[node name="AudioOffSprite" type="Sprite2D" parent="SoundEffectPlayer"]
+visible = false
+position = Vector2(64, 26)
+texture = ExtResource("11_d3fsq")
+
+[node name="EndingMessage" type="Label" parent="."]
+visible = false
+offset_right = 1151.0
+offset_bottom = 208.0
+text = "Congratulations on your mission to the Psyche astroid!
+You have finished the game with a score of"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]
 [connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]

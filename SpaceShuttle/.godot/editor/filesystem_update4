@@ -9,6 +9,5 @@ res://landing_pad.tscn
 res://surface.tscn
 res://Meteorite.tscn
 res://hints.tscn
-res://hints.json
-res://mouse.gd
+res://surface.gd
 res://start.gd

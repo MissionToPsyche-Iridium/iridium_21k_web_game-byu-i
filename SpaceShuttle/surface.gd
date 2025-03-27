@@ -285,7 +285,9 @@ func clear_level(WoL):
 	grC = []
 	lp.queue_free()
 	if WoL == "Win":
-		p.queue_free()
+		# There is a bug here that occurs if you somehow manage to land and crash at the same time. The game will try to delete the player, but it was already deleted because it crashed.
+		if is_instance_valid(p):
+			p.queue_free()
 
 func stars():
 	var x = rng.randi_range(50,1100)
