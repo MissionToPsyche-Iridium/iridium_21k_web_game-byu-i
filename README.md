@@ -1,6 +1,6 @@
-# Psyche: The Asteroid Adventure Game
+# Asteroids and Trivia
 
-Welcome to **Psyche: The Asteroid Adventure Game**, a web-based game that engages players of all ages with NASA's Psyche mission! The game is both fun and educational, designed to spark interest in space exploration while teaching players about the metal-rich asteroid Psyche and other space-related topics.
+Welcome to **Asteroids and Trivia**, a web-based game that engages players of all ages with NASA's Psyche mission! The game is both fun and educational, designed to spark interest in space exploration while teaching players about the metal-rich asteroid Psyche and other space-related topics.
 
 ## About the Game
 
