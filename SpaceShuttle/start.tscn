@@ -30,6 +30,17 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "START"
 
+[node name="Title" type="Label" parent="startButton"]
+layout_mode = 0
+offset_left = -499.0
+offset_top = -208.0
+offset_right = 650.0
+offset_bottom = 23.0
+theme_type_variation = &"HeaderLarge"
+text = "Astroids and Trivia"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="tutorialButton" type="Button" parent="."]
 top_level = true
 offset_left = 500.0
